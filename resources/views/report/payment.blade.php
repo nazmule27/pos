@@ -11,7 +11,7 @@
                     <tr>
                         <th>SL</th>
                         <th>Payment Title</th>
-                        <th>Purpose</th>
+                        <th>Address/Purpose</th>
                         <th>Amount</th>
                         <th>Date and Time</th>
                         <th>Status</th>

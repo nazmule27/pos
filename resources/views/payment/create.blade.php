@@ -15,7 +15,13 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="amount">Payment amount</label>
+                <label for="purpose">Payment Purpose/Address</label>
+                <input type="text" name="purpose" class="form-control custom-text" maxlength="50" placeholder="Address/Purpose *" required>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="amount">Payment Amount</label>
                 <input type="text" name="amount" class="form-control custom-text" pattern="^(0|[1-9][0-9]*)$" placeholder="Amount Taka *" required>
             </div>
         </div>

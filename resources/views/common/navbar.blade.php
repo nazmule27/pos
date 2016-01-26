@@ -46,7 +46,7 @@
                         <a href="javascript:void(0)"><i class="glyphicon glyphicon-list"></i> Report</a>
                         <ul>
                             <li>
-                                <a href="{{route('stock.index')}}">stock</a>
+                                <a href="{{route('stock.index')}}">Stock</a>
                             </li>
                             <li>
                                 <a href="{{route('sales.index')}}">Sales</a>
