@@ -11,7 +11,7 @@
             <center>Akua warless Rood, Mymensingh</center>
         </div>
         <div class="full-with">
-            <center><small class="contacts">Visit http://ayanelectric.com, Mobile: 01730867797, Email: ayanelectric1gmail.com Like us: <img class="facebook" src="{{ URL::asset('img/fb32.png') }}" alt="">/AyanElectric</small></center>
+            <center><small class="contacts">Visit http://ayanelectric.com, Mobile: 01730867797, Email: ayanelectric1@gmail.com Like us: <img class="facebook" src="{{ URL::asset('img/fb32.png') }}" alt="">/AyanElectric</small></center>
         </div>
         <div class="full-with">
             ----------------------------------------------------------------------------------------------------------------------------------------------------

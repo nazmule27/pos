@@ -93,7 +93,7 @@ class SalesController extends Controller
     public function show($id)
     {
         $categories = \DB::table('product_category')->lists('c_name', 'cid');
-        $invoice= \DB::select('SELECT s.invoice_no FROM sales s where s.id='.$id);
+        $invoice= \DB::select('SELECT * FROM sales s where s.id='.$id);
         return view('sales.exchange', ['categories'=>$categories, 'invoice'=>$invoice]);
     }
 
@@ -123,6 +123,10 @@ class SalesController extends Controller
         $data=Sales::findOrFail($id);
         $data->delete();
         return redirect('sales');
+    }
+    public static function getProductByCid(){
+        $products = \DB::table('products')->lists('p_name', 'pid');
+        return $products;
     }
 
 }

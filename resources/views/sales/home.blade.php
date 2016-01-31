@@ -52,7 +52,7 @@
                         <td>{{$data->created_at}}</td>
                         <td>
                             <a class="btn btn-success" href="{{route('sales.edit', $data->id)}}">Due</a>
-                            <a class="btn btn-warning" href="{{route('sales.edit', $data->id)}}">Exch.</a>
+                            <a class="btn btn-warning" href="{{route('sales.show', $data->id)}}">Exch.</a>
                             {!!Form::open(array('route' => ['sales.destroy', $data->id], 'class'=>'pull-right', 'method'=>'delete'))!!}
                             {!!Form::hidden('invoice_no', $data->invoice_no)!!}
                             {!!Form::hidden('products', $data->products)!!}
