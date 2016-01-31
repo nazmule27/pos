@@ -92,7 +92,9 @@ class SalesController extends Controller
     }
     public function show($id)
     {
-        //return view('sales.print');
+        $categories = \DB::table('product_category')->lists('c_name', 'cid');
+        $invoice= \DB::select('SELECT s.invoice_no FROM sales s where s.id='.$id);
+        return view('sales.exchange', ['categories'=>$categories, 'invoice'=>$invoice]);
     }
 
     public function edit($id)

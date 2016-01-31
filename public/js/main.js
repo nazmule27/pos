@@ -252,7 +252,7 @@ $('#stock').dataTable( {
 
         // Update footer
         $( api.column( 2 ).footer() ).html(
-            pageTotalTaka +' ('+ totalTaka +')'
+            parseFloat(pageTotalTaka).toFixed(2) +' ('+ parseFloat(totalTaka).toFixed(2) +')'
         );
         //
         // Total over all pages
@@ -273,7 +273,7 @@ $('#stock').dataTable( {
 
         // Update footer
         $( api.column( 3 ).footer() ).html(
-            pageTotalTakaSelling +' ('+ totalTakaSelling +')'
+            parseFloat(pageTotalTakaSelling).toFixed(2) +' ('+ parseFloat(totalTakaSelling).toFixed(2) +')'
         );
         //
         // Total over all pages
@@ -294,7 +294,7 @@ $('#stock').dataTable( {
 
         // Update footer
         $( api.column( 4 ).footer() ).html(
-            pageTotalQuantity  +' ('+ totalQuantity+')'
+            parseFloat(pageTotalQuantity).toFixed(2)  +' ('+ parseFloat(totalQuantity).toFixed(2)+')'
         );
         //
         netTotalTaka = api
@@ -314,7 +314,7 @@ $('#stock').dataTable( {
 
         // Update footer
         $( api.column( 5 ).footer() ).html(
-            pageNetTotalTaka +' ('+ netTotalTaka +')'
+            parseFloat(pageNetTotalTaka).toFixed(2) +' ('+ parseFloat(netTotalTaka).toFixed(2) +')'
         );
         //
         // Total over all pages
@@ -335,7 +335,7 @@ $('#stock').dataTable( {
 
         // Update footer
         $( api.column( 6 ).footer() ).html(
-            pageNetTotalTakaSelling +' ('+ netTotalTakaSelling +')'
+            parseFloat(pageNetTotalTakaSelling).toFixed(2) +' ('+ parseFloat(netTotalTakaSelling).toFixed(2) +')'
         );
     }
 });
@@ -684,7 +684,7 @@ function stockQuantityChange(){
     var stock_quantity= document.getElementById('stock_quantity');
     var stock_total_price= document.getElementById('stock_total_price');
     if (stock_quantity.value!='') {
-        stock_total_price.value=(stock_buying_price.value)*(stock_quantity.value);
+        stock_total_price.value=((stock_buying_price.value)*(stock_quantity.value)).toFixed(2);
     }
     stockDiscountChange();
 }
@@ -751,7 +751,7 @@ function quantityChange(id) {
     var vat= document.getElementById('vat');
 
     if (quantity.value!='') {
-        amount.value=(price.value)*(quantity.value);
+        amount.value=((price.value)*(quantity.value)).toFixed(2);
     }
     else {
         amount.value='';
@@ -759,13 +759,13 @@ function quantityChange(id) {
     }
     var subV=0;
     for(var i=1; i<=id; i++ ) {
-        subV=parseInt(subV)+parseInt(document.getElementById('amount'+i).value);
+        subV=parseFloat(subV)+parseFloat(document.getElementById('amount'+i).value);
     }
 
     total_price.value=subV;
 
     if (quantity.value!='') {
-        totalAmountVat.value=parseInt(total_price.value)+parseInt(vat.value);
+        totalAmountVat.value=parseFloat(total_price.value)+parseFloat(vat.value);
     }
     else {
         totalAmountVat.value='';
@@ -788,7 +788,7 @@ function vatChange() {
     var total_price= document.getElementById('total_price');
 
     if (total_price.value!='') {
-        totalAmountVat.value=parseInt(total_price.value)+(parseInt(vat.value))*(parseInt(total_price.value))/100;
+        totalAmountVat.value=(parseFloat(total_price.value)+(parseFloat(vat.value))*(parseFloat(total_price.value))/100).toFixed(0);
     }
     else {
         totalAmountVat.value='';
@@ -985,7 +985,7 @@ function validateForm() {
     for(var i=1; i<rowCount; i++){
         var quantity = document.getElementById('quantity'+i).value;
         var available = document.getElementById('available'+i).value;
-        if (available == null || available == "" || parseInt(quantity)>parseInt(available)||parseInt(quantity)<0.001) {
+        if (available == null || available == "" || parseFloat(quantity)>parseFloat(available)||parseFloat(quantity)<0.001) {
             $("#quantity"+i).focus();
             $('#quantity'+i).addClass('error');
             return false;

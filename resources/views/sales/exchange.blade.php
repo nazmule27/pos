@@ -2,7 +2,7 @@
 @include('common.navbar')
 
 <div class="container padT60">
-    <h3>Sale Product</h3>
+    <h3>Exchange Product</h3>
     <div class="row">
         <div class="col-md-12">
             {{--<form id="inventoryForm" class="form-horizontal" method="post" name="messageForm" action="insert_invenory.php">--}}
@@ -16,16 +16,15 @@
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label">Invoice No:</label>
-                            <?php if(isset($invoice[0]->invoice_no)) {$inv=$invoice[0]->invoice_no; } else $inv=0;?>
-                            <input type="text" class="form-control" name="invoiceNo" id="invoiceNo" value="{{date('Y-').(string)(($inv)+1)}}" readonly />
+                            <input type="text" class="form-control" name="invoiceNo" id="invoiceNo" value="{{$invoice[0]->invoice_no}}" readonly />
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="customerName">Customer Name: </label>
-                            <input type="text" class="form-control" name="customerName" id="customerName" value="N/A" autofocus required/>
+                            <input type="text" class="form-control" name="customerName" id="customerName" autofocus required/>
                         </div>
                         <div class="col-sm-4">
                             <label class="control-label">Address:</label>
-                            <input type="text" class="form-control" name="address" id="address" value="N/A" />
+                            <input type="text" class="form-control" name="address" id="address"  />
                         </div>
                     </div>
 

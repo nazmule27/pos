@@ -69,7 +69,7 @@ Route::get('/ajax-product-stock', function (){
 Route::get('/ajax-product-price', function (){
     $pid=Input::get('pid');
     //$products=Product::where('pid', '=', $pid)->get();
-    $products=\DB::select('SELECT p.pid, p.cid, p.p_name, p.buying_price, p.selling_price,s.quantity FROM product p, stock s WHERE p.pid=s.pid AND p.pid='.$pid);
+    $products=\DB::select('SELECT p.pid, p.cid, p.p_name, ROUND(p.buying_price,2) as buying_price, ROUND(p.selling_price, 2) as selling_price, ROUND(s.quantity, 2) as quantity FROM product p, stock s WHERE p.pid=s.pid AND p.pid='.$pid);
     return Response::json($products);
 });
 Route::get('/ajax-stock-product-price', function (){
