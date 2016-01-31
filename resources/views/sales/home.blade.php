@@ -10,23 +10,21 @@
                     <tr>
                         <th>Invoice No</th>
                         <th>Customer Name</th>
-                        <th>Products</th>
+                        {{--<th>Products</th>--}}
                         <th>Total</th>
-                        <th>Total wVAT</th>
+                        {{--<th>Total wVAT</th>--}}
                         <th>Disc.</th>
                         <th>Net Price</th>
                         <th>Paid</th>
                         <th>Dues</th>
                         <th>Soled By</th>
                         <th>Selling Date</th>
-                        <th width="190">Action</th>
+                        <th width="230">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>Total: </th>
-                    <th> </th>
-                    <th> </th>
                     <th> </th>
                     <th> </th>
                     <th> </th>
@@ -43,9 +41,9 @@
                     <tr>
                         <td>{{$data->invoice_no}}</td>
                         <td>{{$data->customer_id}}</td>
-                        <td>{{$data->products}}</td>
+                        {{--<td>{{$data->products}}</td>--}}
                         <td>{{$data->total_price}}</td>
-                        <td>{{$data->total_price_vat}}</td>
+                        {{--<td>{{$data->total_price_vat}}</td>--}}
                         <td>{{$data->discount}}</td>
                         <td>{{$data->discount_price}}</td>
                         <td>{{$data->paid}}</td>
@@ -54,7 +52,7 @@
                         <td>{{$data->created_at}}</td>
                         <td>
                             <a class="btn btn-success" href="{{route('sales.edit', $data->id)}}">Due</a>
-                            <a class="btn btn-warning" href="{{route('sales.edit', $data->id)}}">Exchange</a>
+                            <a class="btn btn-warning" href="{{route('sales.edit', $data->id)}}">Exch.</a>
                             {!!Form::open(array('route' => ['sales.destroy', $data->id], 'class'=>'pull-right', 'method'=>'delete'))!!}
                             {!!Form::hidden('invoice_no', $data->invoice_no)!!}
                             {!!Form::hidden('products', $data->products)!!}

@@ -21,7 +21,7 @@ class StockController extends Controller
         return view('stock.create', ['categories'=>$categories]);
     }
     public function store(Request $request){
-        for($i=1; $i<20; $i++) {
+        for($i=1; $i<41; $i++) {
             $categoryId=$request->get('category'.$i);
             $productId=$request->get('productName'.$i);
             $quantity=$request->get('quantity'.$i);

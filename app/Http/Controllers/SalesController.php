@@ -34,7 +34,7 @@ class SalesController extends Controller
         $unit_prices='';
         $quantities='';
         $amounts='';
-        for($i=1; $i<20; $i++){
+        for($i=1; $i<41; $i++){
             $category=$request->get('category'.$i);
             $product=$request->get('productName'.$i);
             $productName=$request->get('products'.$i);
