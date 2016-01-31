@@ -16,7 +16,7 @@
                         <th>Quantity</th>
                         <th>Net Buying Price</th>
                         <th>Net Selling Price</th>
-                        <th>Last Added Date</th>
+                        <th width="120">Last Added Date</th>
                     </tr>
                 </thead>
                 <tfoot>

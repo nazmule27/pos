@@ -20,12 +20,6 @@ class SalesController extends Controller
         $all_data= \DB::select('select s.* from sales s');
         return view('sales.home', ['all_data' => $all_data]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories = \DB::table('product_category')->lists('c_name', 'cid');
@@ -96,13 +90,6 @@ class SalesController extends Controller
         return redirect('/prints');
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //return view('sales.print');
