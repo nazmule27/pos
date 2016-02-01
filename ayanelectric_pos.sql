@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.7
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 24, 2016 at 11:17 PM
--- Server version: 5.5.45-cll-lve
--- PHP Version: 5.4.31
+-- Host: 127.0.0.1
+-- Generation Time: Feb 01, 2016 at 09:35 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,7 +36,17 @@ CREATE TABLE IF NOT EXISTS `income` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `income`
+--
+
+INSERT INTO `income` (`id`, `invoice_no`, `income_title`, `amount`, `status`, `collected_by`, `created_at`, `updated_at`) VALUES
+(1, '2016-1', 'Sales', 500, 'Valid', 'Nazmul Haque', '2016-01-25 10:03:45', '2016-01-25 10:03:45'),
+(2, '2016-2', 'Sales', 5100, 'Valid', 'Nazmul Haque', '2016-01-25 10:06:13', '2016-01-25 10:06:13'),
+(3, '2016-1', 'Sales arrear', 10, 'Valid', 'Nazmul Haque', '2016-01-26 06:15:23', '2016-01-26 06:15:23'),
+(4, '2016-1', 'Sales (Arrear)', 800, 'Valid', 'Nazmul Haque', '2016-01-26 06:25:53', '2016-01-26 06:25:53');
 
 -- --------------------------------------------------------
 
@@ -115,7 +125,15 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `payment_title`, `purpose`, `amount`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Vendor bill', 'Nazmul Haque', 2500, 'Valid', '2016-01-25 10:01:00', '2016-01-25 10:01:00'),
+(2, 'Vendor bill', 'Nazmul Haque', 1000, 'Valid', '2016-01-25 10:02:02', '2016-01-25 10:02:02');
 
 -- --------------------------------------------------------
 
@@ -129,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `payment_type` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ptid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -602,11 +620,11 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `invoice_no` varchar(15) DEFAULT NULL,
   `customer_id` varchar(100) DEFAULT NULL,
   `customer_address` varchar(255) DEFAULT NULL,
-  `categories` varchar(100) DEFAULT NULL,
-  `products` varchar(100) DEFAULT NULL,
-  `unit_price` varchar(11) DEFAULT NULL,
-  `quantity` varchar(11) DEFAULT NULL,
-  `amount` varchar(11) DEFAULT NULL,
+  `categories` varchar(200) DEFAULT NULL,
+  `products` varchar(255) DEFAULT NULL,
+  `unit_price` varchar(255) DEFAULT NULL,
+  `quantity` varchar(200) DEFAULT NULL,
+  `amount` float DEFAULT NULL,
   `total_price` int(11) DEFAULT NULL,
   `vat` int(11) DEFAULT NULL,
   `total_price_vat` int(11) DEFAULT NULL,
@@ -618,7 +636,15 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `invoice_no`, `customer_id`, `customer_address`, `categories`, `products`, `unit_price`, `quantity`, `amount`, `total_price`, `vat`, `total_price_vat`, `discount`, `discount_price`, `paid`, `dues`, `sold_by`, `created_at`, `updated_at`) VALUES
+(1, '2016-1', 'Nazmul Haque', '', '26,1,', '384,13,', '12,962,', '2,3.0,', 24, 2910, 0, 2910, 500, 2410, 1310, 1100, 'Nazmul Haque', '2016-01-25 10:03:45', '2016-01-25 10:03:45'),
+(2, '2016-2', 'Nazmul Haque', '01920374399', '26,26,1,1,', '385,384,13,14,', '15,12,962,1', '1,2,1,3,', 15, 5240, 0, 5240, 50, 5190, 5100, 90, 'Nazmul Haque', '2016-01-25 10:06:13', '2016-01-25 10:06:13');
 
 -- --------------------------------------------------------
 
@@ -635,7 +661,17 @@ CREATE TABLE IF NOT EXISTS `stock` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`id`, `cid`, `pid`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, 1, 13, 1, '2016-01-25 10:01:00', '2016-01-25 10:01:00'),
+(2, 26, 384, 1, '2016-01-25 10:02:02', '2016-01-25 10:02:02'),
+(3, 1, 14, 5, '2016-01-25 10:02:02', '2016-01-25 10:02:02'),
+(4, 26, 385, 9, '2016-01-25 10:02:02', '2016-01-25 10:02:02');
 
 -- --------------------------------------------------------
 
@@ -655,11 +691,16 @@ CREATE TABLE IF NOT EXISTS `stock_pay` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `stock_pay`
 --
+
+INSERT INTO `stock_pay` (`id`, `vendor_name`, `vendor_address`, `total_price`, `discount`, `net_price`, `paid`, `due`, `created_at`, `updated_at`) VALUES
+(1, 'Nazmul Haque', 'ABC', 4275, 500, 3775, 2500, 1275, '2016-01-25 10:01:00', '2016-01-25 10:01:00'),
+(2, 'Nazmul Haque', 'ABC', 10159, 10, 10149, 1000, 9149, '2016-01-25 10:02:02', '2016-01-25 10:02:02');
+
 -- --------------------------------------------------------
 
 --

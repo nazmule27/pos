@@ -5,8 +5,7 @@
     <h3>Exchange Product</h3>
     <div class="row">
         <div class="col-md-12">
-            {{--<form id="inventoryForm" class="form-horizontal" method="post" name="messageForm" action="insert_invenory.php">--}}
-                {!!Form::open(array('route'=>'sales.store', 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}
+                {!!Form::open(array('url'=>'sales.exchange', 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}
                 <fieldset>
                     <legend>Basic Info:</legend>
                     <div class="row">
@@ -27,7 +26,6 @@
                             <input type="text" class="form-control" name="address" id="address" value="{{$invoice[0]->customer_address}}"  />
                         </div>
                     </div>
-
                     <legend>Entry Details:</legend>
                     <div class="row">
                         <div class="col-sm-12">
@@ -54,18 +52,20 @@
                                 </thead>
                                 <tbody>
                                 <?php for ($i = 0; $i < count($sProducts)-1; ++$i) {
-                                //$productList=getProductByCid();
+                                $productList=AppHelper::getProductByCid($sCategories[$i]);
+                                $boughtPrice=AppHelper::getBoughtPrice($sProducts[$i]);
+                                $available=AppHelper::getAvailable($sProducts[$i]);
+                                $productName=AppHelper::getProductName($sProducts[$i]);
                                 ?>
                                 <tr>
                                     <td>
                                         {!! Form::select('category1', (['' => 'Select Category'] + $categories), $sCategories[$i], ['class' => 'form-control', 'id' => 'category1', 'onChange'=>'getSalesProduct(this.id, this.value)', 'required']) !!}
                                     </td>
                                     <td>
-                                        {!! Form::select('productName1', (['' => 'Select Product']), $sProducts[$i], ['class' => 'form-control', 'id' => 'productName1', 'onChange'=>'getPrice(this.id, this.value)', 'required']) !!}
-
+                                        {!! Form::select('productName1', (['' => 'Select Product'] + $productList), $sProducts[$i], ['class' => 'form-control', 'id' => 'productName1', 'onChange'=>'getPrice(this.id, this.value)', 'required']) !!}
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="buying_price1" id="buying_price1" readonly>
+                                        <input class="form-control" type="text" name="buying_price1" id="buying_price1" value="{{$boughtPrice[0]->buying_price}}" readonly>
                                     </td>
                                     <td>
                                         <input class="form-control" type="text" name="price1" id="price1" value="{{$unit_price[$i]}}" readonly>
@@ -74,14 +74,13 @@
                                         <input class="form-control" type="text" name="quantity1" id="quantity1" autocomplete="off" onkeyup="quantityChange(this.id);" pattern="^[0-9]+(\.\d{1,2})?" placeholder="Quantity *" value="{{$quantity[$i]}}" required>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="available1" id="available1"  readonly required>
+                                        <input class="form-control" type="text" name="available1" id="available1" value="{{$available[0]->quantity}}" readonly required>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="amount1" id="amount1" value="{{$amount[$i]}}" readonly required>
-
+                                        <input class="form-control" type="text" name="amount1" id="amount1" value="{{$unit_price[$i]}}" readonly required>
                                     </td>
                                     <td>
-                                        <input type="hidden" name="products1" id="products1">
+                                        <input type="hidden" name="products1" id="products1" value="{{$productName[0]->p_name}}">
                                         <a href="javascript:void(0)" onclick="deleteRow(this)"><i class="glyphicon glyphicon-trash "></i></a>
                                     </td>
                                 </tr>

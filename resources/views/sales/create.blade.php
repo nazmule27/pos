@@ -68,7 +68,6 @@
                                     </td>
                                     <td>
                                         <input class="form-control" type="text" name="amount1" id="amount1" readonly required>
-
                                     </td>
                                     <td>
                                         <input type="hidden" name="products1" id="products1">

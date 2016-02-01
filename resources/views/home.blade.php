@@ -10,6 +10,7 @@
             <center><img class="home-img" src="{{ URL::asset('img/slider/home-image-1.jpg') }}" alt=""></center>
         </div>
     </div>
+
 </div>
 
 @include('common.footer')

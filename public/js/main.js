@@ -44,6 +44,7 @@ $(".flp textarea").focus(function(){
 $('#stock_pay').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
+    "order": [[ 7, "desc" ]],
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
         // Remove the formatting to get integer data for summation
