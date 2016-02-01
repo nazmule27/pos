@@ -127,15 +127,13 @@ class SalesController extends Controller
         $data->delete();
         return redirect('sales');
     }
-    public function exchange(Request $request,$id)
+    public function exchange(Request $request, $id)
     {
-        //{{session()->get('old_sale')['id']}}
         $products=explode(",", session()->get('old_sale')['products']);
         $quantity=explode(",", session()->get('old_sale')['quantity']);
         for ($i = 0; $i < count($products); ++$i) {
             \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'"');
         }
-
         $categories='';
         $productNames='';
         $products='';
@@ -194,7 +192,6 @@ class SalesController extends Controller
 
         $data=Sales::findOrFail($id);
         $data->update($input);
-
 
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoice_no').'"');
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES

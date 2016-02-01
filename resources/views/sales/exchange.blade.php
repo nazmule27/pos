@@ -5,7 +5,9 @@
     <h3>Exchange Product</h3>
     <div class="row">
         <div class="col-md-12">
-                {!!Form::open(array('url'=>'sales.exchange', 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}
+            <form id="sales-table" class="contact-panel" onsubmit="return validateForm()" action="/sales/exchange" method="POST">
+                {!! csrf_field() !!}
+                {{--{!!Form::open(array('route'=>'sales.exchange', 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}--}}
                 <fieldset>
                     <legend>Basic Info:</legend>
                     <div class="row">
@@ -19,7 +21,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="customerName">Customer Name: </label>
-                            <input type="text" class="form-control" name="customerName" id="customerName" value="{{$invoice[0]->customer_id}}" autofocus required/>
+                            <input type="text" class="form-control" name="customerName" id="customerName" value="{{$invoice[0]->customer_id}}" required/>
                         </div>
                         <div class="col-sm-4">
                             <label class="control-label">Address:</label>
@@ -59,28 +61,28 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        {!! Form::select('category1', (['' => 'Select Category'] + $categories), $sCategories[$i], ['class' => 'form-control', 'id' => 'category1', 'onChange'=>'getSalesProduct(this.id, this.value)', 'required']) !!}
+                                        {!! Form::select('category'.($i+1), (['' => 'Select Category'] + $categories), $sCategories[$i], ['class' => 'form-control', 'id' => 'category'.($i+1), 'onChange'=>'getSalesProduct(this.id, this.value)', 'required']) !!}
                                     </td>
                                     <td>
-                                        {!! Form::select('productName1', (['' => 'Select Product'] + $productList), $sProducts[$i], ['class' => 'form-control', 'id' => 'productName1', 'onChange'=>'getPrice(this.id, this.value)', 'required']) !!}
+                                        {!! Form::select('productName'.($i+1), (['' => 'Select Product'] + $productList), $sProducts[$i], ['class' => 'form-control', 'id' => 'productName'.($i+1), 'onChange'=>'getPrice(this.id, this.value)', 'required']) !!}
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="buying_price1" id="buying_price1" value="{{$boughtPrice[0]->buying_price}}" readonly>
+                                        <input class="form-control" type="text" name="buying_price{{$i+1}}" id="buying_price{{$i+1}}" value="{{$boughtPrice[0]->buying_price}}" readonly>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="price1" id="price1" value="{{$unit_price[$i]}}" readonly>
+                                        <input class="form-control" type="text" name="price{{$i+1}}" id="price{{$i+1}}" value="{{$unit_price[$i]}}" readonly>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="quantity1" id="quantity1" autocomplete="off" onkeyup="quantityChange(this.id);" pattern="^[0-9]+(\.\d{1,2})?" placeholder="Quantity *" value="{{$quantity[$i]}}" required>
+                                        <input class="form-control" type="text" name="quantity{{$i+1}}" id="quantity{{$i+1}}" autocomplete="off" onkeyup="quantityChange(this.id);" pattern="^[0-9]+(\.\d{1,2})?" placeholder="Quantity *" value="{{$quantity[$i]}}" required>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="available1" id="available1" value="{{$available[0]->quantity}}" readonly required>
+                                        <input class="form-control" type="text" name="available{{$i+1}}" id="available{{$i+1}}" value="{{$available[0]->quantity}}" readonly required>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="amount1" id="amount1" value="{{$unit_price[$i]}}" readonly required>
+                                        <input class="form-control" type="text" name="amount{{$i+1}}" id="amount{{$i+1}}" value="{{$amount[$i]}}" readonly required>
                                     </td>
                                     <td>
-                                        <input type="hidden" name="products1" id="products1" value="{{$productName[0]->p_name}}">
+                                        <input type="hidden" name="products{{$i+1}}" id="products{{$i+1}}" value="{{$productName[0]->p_name}}">
                                         <a href="javascript:void(0)" onclick="deleteRow(this)"><i class="glyphicon glyphicon-trash "></i></a>
                                     </td>
                                 </tr>
@@ -114,7 +116,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p class="peraCon">Taka</p>
-                            <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" value="{{$invoice[0]->paid}}" required>
+                            <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" value="{{$invoice[0]->paid}}" autofocus required>
                             <p class="peraCon">Paid:</p>
                         </div>
                     </div>
