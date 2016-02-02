@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
     Route::resource('sales', 'SalesController');
+    Route::any('sales/exchange/{id}', 'SalesController@exchange');
     Route::get('/prints', function (){
         return view('sales.print');
     });
@@ -85,5 +86,3 @@ Route::get('/ajax-loan-installment', function (){
     $loan=Loan::where('lid', '=', $lid)->get();
     return Response::json($loan);
 });
-//Route::post('sales/exchange', 'SalesController@exchange');
-Route::any('sales/exchange/{id}', 'SalesController@exchange');

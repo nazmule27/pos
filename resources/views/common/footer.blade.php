@@ -1,7 +1,7 @@
 <div class="container">
     <hr class="no-print">
     <footer>
-        <center><p class="no-print">Copyright &copy; <script type="text/javascript">var copyWriteFrom='2016';var copyWriteTo= new Date().getFullYear();if(copyWriteFrom==copyWriteTo){document.write(copyWriteFrom);}else{document.write(copyWriteFrom + '-' +copyWriteTo);}</script> AyanElectric, all right reserved.</p></center>
+        <center><p class="no-print">Copyright &copy; <script type="text/javascript">var copyWriteFrom='2016';var copyWriteTo= new Date().getFullYear();if(copyWriteFrom==copyWriteTo){document.write(copyWriteFrom);}else{document.write(copyWriteFrom + '-' +copyWriteTo);}</script> Ayan Electric House, all right reserved.</p></center>
     </footer>
 </div>
 <p class="power no-print">Powered by: <a href="https://www.linkedin.com/in/nazmul-haque-0019504b" target="_blank">Nazmul</a></p>
