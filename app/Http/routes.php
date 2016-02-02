@@ -28,7 +28,10 @@ Route::get('/home', function (){
 Route::get('/contact', function (){
     return view('contact');
 });
-
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 Route::group(['middleware' => 'auth'], function() {
 // Registration routes...
     Route::get('auth/register', 'Auth\AuthController@getRegister');
