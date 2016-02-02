@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/ajax-product', function (){
     $cid=Input::get('cid');
-    $products=Product::where('cid', '=', $cid)->get();
+    $products=Product::where('cid', '=', $cid)->orderBy('p_name')->get();
     return Response::json($products);
 });
 Route::get('/ajax-product-stock', function (){

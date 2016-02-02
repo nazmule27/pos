@@ -20,7 +20,7 @@ class LoanInstallmentController extends Controller
     }
     public function create()
     {
-        $loans = \DB::table('loan')->lists('loan_title', 'lid');
+        $loans = \DB::table('loan')->orderBy('loan_title')->lists('loan_title', 'lid');
         return view('installment.create')->with('loans', $loans);
     }
     public function store(Request $request)

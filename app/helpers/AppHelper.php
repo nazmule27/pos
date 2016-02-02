@@ -9,7 +9,7 @@ use App\Http\Requests;
 
 class AppHelper {
     public static function getProductByCid($cid){
-        $products = \DB::table('product')->where('cid',$cid)->lists('p_name', 'pid');
+        $products = \DB::table('product')->where('cid',$cid)->orderBy('p_name')->lists('p_name', 'pid');
         return $products;
     }
     public static function getBoughtPrice($pid){

@@ -19,7 +19,7 @@ class PaymentController extends Controller
     }
     public function create()
     {
-        $paymentCategories = \DB::table('payment_type')->lists('payment_title', 'ptid');
+        $paymentCategories = \DB::table('payment_type')->orderBy('payment_title')->lists('payment_title', 'ptid');
         return view('payment.create')->with('paymentCategories', $paymentCategories);
     }
     public function store(Request $request)

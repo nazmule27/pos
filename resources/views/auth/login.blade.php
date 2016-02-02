@@ -25,11 +25,10 @@
                     </div>
                     <div class="form-group col-md-12">
                         <input type="checkbox" name="remember"> Remember Me
-                        <a href="{!! url('password/email') !!}">Forgot password ?</a>
+                        {{--<a href="{!! url('password/email') !!}">Forgot password ?</a>--}}
                     </div>
                     <div class="form-group col-md-12">
                         <button class="btn btn-default col-md-12 custom-text" type="submit">Login</button>
-                        {{--<input type="submit" class="btn btn-default col-md-12 custom-text" value="Login">--}}
                     </div>
                 </form>
             </div>
