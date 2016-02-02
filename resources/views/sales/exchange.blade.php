@@ -5,9 +5,11 @@
     <h3>Exchange Product</h3>
     <div class="row">
         <div class="col-md-12">
-            <form id="sales-table" class="contact-panel" onsubmit="return validateForm()" action="/sales/exchange" method="POST">
-                {!! csrf_field() !!}
-                {{--{!!Form::open(array('route'=>'sales.exchange', 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}--}}
+            {{--<form id="sales-table" class="contact-panel" onsubmit="return validateForm()" action="/sales/exchange" method="POST">
+                {!! csrf_field() !!}--}}
+            {{--array('action' => array('SalesController@update', $invoice[0]->id)--}}
+                {{--{!!Form::open(array('route' => ['sales.exchange', $invoice[0]->id], 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table'))!!}--}}
+            {!!Form::open(array('url' => array('sales/exchange', $invoice[0]->id), 'class'=>'contact-panel','onsubmit'=>'return validateForm()', 'id'=>'sales-table', 'method'=>'PUT'))!!}
                 <fieldset>
                     <legend>Basic Info:</legend>
                     <div class="row">

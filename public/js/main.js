@@ -599,6 +599,7 @@ $('#installment').DataTable( {
 $('#balanced').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
+    "order": [[5, "desc"]],
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
         // Remove the formatting to get integer data for summation
@@ -638,6 +639,11 @@ $('#balanced').dataTable( {
             }, 0 );
         $( api.column( 4 ).footer() ).html(
             pageTotaCr +' ('+ totalCr +')'
+        );
+
+
+        $( api.column( 5 ).footer() ).html(
+            'Balance = '+(pageTotaCr-pageTotaDr) +' ('+ (totalCr-totalDr) +')'
         );
     }
 });

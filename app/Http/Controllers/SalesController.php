@@ -84,7 +84,7 @@ class SalesController extends Controller
             'sold_by' => Auth::user()->name,
         );
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
-("'.$request->get('invoiceNo').'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+("'.$request->get('invoiceNo').'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", NOW(), NOW())');
         Sales::create($input);
         session()->put('sale_input', $input);
         return redirect('/prints');
@@ -94,7 +94,6 @@ class SalesController extends Controller
     {
         $old_sale=Sales::where('id', '=', $id)->first()->toArray();
         session()->put('old_sale', $old_sale);
-
         $categories = \DB::table('product_category')->lists('c_name', 'cid');
         $invoice= \DB::select('SELECT * FROM sales s where s.id='.$id);
         return view('sales.exchange', ['categories'=>$categories, 'invoice'=>$invoice]);
@@ -112,6 +111,7 @@ class SalesController extends Controller
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
 ("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", NOW(), NOW())');
         return redirect('sales');
+
     }
 
     public function destroy(Request $request,$id)
@@ -193,10 +193,11 @@ class SalesController extends Controller
         $data=Sales::findOrFail($id);
         $data->update($input);
 
-        \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoice_no').'"');
+        \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoiceNo').'"');
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
-("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", NOW(), NOW())');
-        return redirect('sales');
+("'.$request->get('invoiceNo').'", "'.'Sales (Exchange)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", NOW(), NOW())');
+        session()->put('sale_input', $input);
+        return redirect('/prints');
     }
 
 }

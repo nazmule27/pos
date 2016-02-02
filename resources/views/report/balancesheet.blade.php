@@ -14,7 +14,7 @@
                         <th>Address</th>
                         <th>Dr.</th>
                         <th>Cr.</th>
-                        <th>Date Time</th>
+                        <th width="160">Date Time</th>
                     </tr>
                 </thead>
                 <tfoot>

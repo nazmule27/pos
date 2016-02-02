@@ -82,4 +82,5 @@ Route::get('/ajax-loan-installment', function (){
     $loan=Loan::where('lid', '=', $lid)->get();
     return Response::json($loan);
 });
-Route::post('sales/exchange', 'SalesController@exchange');
+//Route::post('sales/exchange', 'SalesController@exchange');
+Route::any('sales/exchange/{id}', 'SalesController@exchange');
