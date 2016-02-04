@@ -465,7 +465,7 @@ $('#sales').dataTable( {
 $('#expense').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
-    "order": [[2, "desc"], [0, "asc"], [1, "asc"]],
+    "order": [[3, "desc"]],
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
         // Remove the formatting to get integer data for summation
@@ -669,8 +669,10 @@ $('#lid').on('change',function(e){
     var lid = e.target.value;
     $.get('/ajax-loan-installment?lid='+lid, function(data){
         $('#installment_amount').value='';
+        $('#loan_title_name').value='';
         $.each(data, function(index, productObj){
             document.getElementById('installment_amount').value = productObj.installment_taka;
+            document.getElementById('loan_title_name').value = $('#lid').find(":selected").text();
         });
     });
 });

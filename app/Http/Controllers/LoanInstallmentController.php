@@ -30,6 +30,7 @@ class LoanInstallmentController extends Controller
         \DB::insert('INSERT INTO loan_installment(lid, installment_amount, drcr, installment_count, created_at, updated_at) VALUES ("'.$request->get('lid').'", "'.$request->get('installment_amount').'",
 "Dr", "'.$request->get('installment_count').'", NOW(), NOW())');
         \DB::update('UPDATE loan SET installment_remain=installment_remain-"'.$request->get('installment_count').'" WHERE lid="'.$request->get('lid').'"');
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Loan Payment", "'.$request->get('loan_title_name').'", "'.$request->get('installment_amount').'", "Valid", NOW(), NOW())');
         return redirect('installment');
     }
     public function show($id)

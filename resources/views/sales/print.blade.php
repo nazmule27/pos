@@ -80,8 +80,8 @@
                 </tr>
                 <tr>
                     <td colspan="3"></td>
-                    <td>--------------</td>
-                    <td>--------------</td>
+                    <td align="right">--------------</td>
+                    <td align="right">--------------</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right"></td>

@@ -25,9 +25,9 @@ Route::get('/', function () {
 Route::get('/home', function (){
     return view('home');
 });
-Route::get('/contact', function (){
-    return view('contact');
-});
+Route::resource('contact', 'ContactController');
+Route::post('contact_request','ContactController@getContactUsForm');
+Route::any('contact_success','ContactController@success');
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

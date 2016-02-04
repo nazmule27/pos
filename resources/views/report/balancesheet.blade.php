@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Payment Title</th>
+                        <th>Transaction Title</th>
                         <th>Address</th>
                         <th>Dr.</th>
                         <th>Cr.</th>

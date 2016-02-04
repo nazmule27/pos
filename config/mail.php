@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'alumni.cse.buet@gmail.com', 'name' => 'Ayan Electric'],
+    'from' => ['address' => 'ayanelectric.info@gmail.com', 'name' => 'Ayan Electric House'],
 
     /*
     |--------------------------------------------------------------------------

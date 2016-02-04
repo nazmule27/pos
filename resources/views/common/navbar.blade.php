@@ -8,7 +8,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="home"><i class="glyphicon glyphicon-home"></i> Home</a>
+                        <a href="{{url('home')}}"><i class="glyphicon glyphicon-home"></i> Home</a>
                     </li>
                     @if (Auth::check())
                     <li>
@@ -65,6 +65,7 @@
                     @endif
                     @endif
                     @if (!Auth::check())
+                        <li><a href="{{route('contact.index')}}"><i class="glyphicon glyphicon-envelope"></i> Contact Us</a></li>
                         <li><a href="{{url('/auth/login')}}"><i class="glyphicon glyphicon-pencil"></i> Log In</a></li>
                     @else (Auth::check())
                         <li>
