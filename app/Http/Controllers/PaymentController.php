@@ -26,7 +26,7 @@ class PaymentController extends Controller
     {
         /*$input=$request->all();
         Payment::create($input);*/
-        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "'.$request->get('amount').'", "Valid", NOW(), NOW())');
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "'.$request->get('amount').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
 
         return redirect('payment');
     }

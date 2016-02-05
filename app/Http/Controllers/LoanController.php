@@ -32,7 +32,7 @@ class LoanController extends Controller
     {
         if(Auth::user()->role==='superadmin'){
             \DB::insert('INSERT INTO loan(loan_title, taken_amount, duration_in_month, installment_count, installment_remain, installment_taka, created_at, updated_at) VALUES ("'.$request->get('loan_title').'", "'.$request->get('taken_amount').'",
-"'.$request->get('duration_in_month').'", "'.$request->get('installment_count').'", "'.$request->get('installment_count').'", "'.$request->get('installment_taka').'", NOW(), NOW())');
+"'.$request->get('duration_in_month').'", "'.$request->get('installment_count').'", "'.$request->get('installment_count').'", "'.$request->get('installment_taka').'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
             return redirect('loan');
         }
         else{

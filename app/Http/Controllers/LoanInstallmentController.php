@@ -28,9 +28,9 @@ class LoanInstallmentController extends Controller
         //$input=$request->all();
         //Loan::create($input);
         \DB::insert('INSERT INTO loan_installment(lid, installment_amount, drcr, installment_count, created_at, updated_at) VALUES ("'.$request->get('lid').'", "'.$request->get('installment_amount').'",
-"Dr", "'.$request->get('installment_count').'", NOW(), NOW())');
+"Dr", "'.$request->get('installment_count').'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         \DB::update('UPDATE loan SET installment_remain=installment_remain-"'.$request->get('installment_count').'" WHERE lid="'.$request->get('lid').'"');
-        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Loan Payment", "'.$request->get('loan_title_name').'", "'.$request->get('installment_amount').'", "Valid", NOW(), NOW())');
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Loan Payment", "'.$request->get('loan_title_name').'", "'.$request->get('installment_amount').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('installment');
     }
     public function show($id)

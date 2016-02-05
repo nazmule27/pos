@@ -28,16 +28,16 @@ class StockController extends Controller
             if(isset($productId)){
                 $product = Stock::where('pid', '=',  $productId)->first();
                 if($product===null){
-                    \DB::insert('INSERT INTO stock(cid, pid, quantity, created_at, updated_at) VALUES ("'.$categoryId.'", "'.$productId.'", "'.$quantity.'", NOW(), NOW())');
+                    \DB::insert('INSERT INTO stock(cid, pid, quantity, created_at, updated_at) VALUES ("'.$categoryId.'", "'.$productId.'", "'.$quantity.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
                 }
                 else {
-                    \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity.'", updated_at=NOW() WHERE pid="'.$productId.'"');
+                    \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity.'", updated_at="'.date('Y-m-d H:i:s').'" WHERE pid="'.$productId.'"');
                 }
             }
         }
         \DB::insert('INSERT INTO stock_pay(vendor_name, vendor_address, total_price, discount, net_price, paid, due, created_at, updated_at) VALUES ("'.$request->get('vendor_name').'", "'.$request->get('vendor_address').'",
-"'.$request->get('total_price').'", "'.$request->get('discount').'", "'.$request->get('discountAmount').'", "'.$request->get('paid').'", "'.$request->get('dues').'", NOW(), NOW())');
-        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Vendor bill", "'.$request->get('vendor_name').'", "'.$request->get('paid').'", "Valid", NOW(), NOW())');
+"'.$request->get('total_price').'", "'.$request->get('discount').'", "'.$request->get('discountAmount').'", "'.$request->get('paid').'", "'.$request->get('dues').'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Vendor bill", "'.$request->get('vendor_name').'", "'.$request->get('paid').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('stock');
     }
     public function show($id){
