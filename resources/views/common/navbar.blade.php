@@ -34,12 +34,7 @@
                         <a href="{{route('payment.index')}}"><i class="glyphicon glyphicon-share-alt"></i> Payment</a>
                     </li>
                     <li>
-                        <a href="{{route('loan.index')}}"><i class="glyphicon glyphicon-tower"></i> Loan</a>
-                        <ul>
-                            <li>
-                                <a href="{{route('installment.index')}}">Installment</a>
-                            </li>
-                        </ul>
+                        <a href="{{route('installment.index')}}"><i class="glyphicon glyphicon-tower"></i> Installment</a>
                     </li>
                     @if (Auth::user()->role=='superadmin')
                     <li>
@@ -83,6 +78,9 @@
                                 </li>
                                 <li>
                                     <a href="{{url('/payment_type')}}">Payment Type</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('loan.index')}}">Loan</a>
                                 </li>
                                 @endif
                                 <li>
