@@ -22,7 +22,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="selling_price">Selling Price</label>
-            <input type="text" id="edit_selling_price" name="selling_price" class="form-control custom-text" value="{{$product->selling_price}}" placeholder="Selling price *" required>
+            <input type="text" id="edit_selling_price" name="selling_price" class="form-control custom-text" value="{{$product->selling_price}}" placeholder="Selling price *" required autofocus>
         </div>
         <div class="col-md-12">
             <div>

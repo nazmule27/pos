@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="payment_title">Payment Title</label>
-                    <input type="text" name="payment_title" class="form-control custom-text" placeholder="Payment Title *" required>
+                    <input type="text" name="payment_title" class="form-control custom-text" placeholder="Payment Title *" required autofocus>
                 </div>
             </div>
             <div class="col-md-12">

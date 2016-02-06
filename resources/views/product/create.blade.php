@@ -6,10 +6,9 @@
     <br>
     <div class="row">
         {!!Form::open(array('route'=>'product.store', 'class'=>'contact-panel', 'onsubmit'=>'return validateFormProduct()'))!!}
-
         <div class="form-group col-md-4">
             <label for="cid">Category</label>
-            {!! Form::select('cid', (['' => 'Select Category'] + $categories), null, ['class' => 'form-control custom-text', 'required']) !!}
+            {!! Form::select('cid', (['' => 'Select Category'] + $categories), null, ['class' => 'form-control custom-text', 'required' , 'autofocus']) !!}
         </div>
         <div class="form-group col-md-4">
             <label for="p_name">Product</label>

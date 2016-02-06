@@ -9,7 +9,7 @@
 
         <div class="form-group col-md-4">
             <label for="lid">Loan Name</label>
-            {!! Form::select('lid', (['' => 'Select Loan'] + $loans), null, ['class' => 'form-control custom-text', 'id' => 'lid', 'required']) !!}
+            {!! Form::select('lid', (['' => 'Select Loan'] + $loans), null, ['class' => 'form-control custom-text', 'id' => 'lid', 'required' ,'autofocus']) !!}
             <input type="hidden" name="loan_title_name" id="loan_title_name" />
         </div>
         <div class="form-group col-md-4">

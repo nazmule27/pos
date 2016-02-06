@@ -8,7 +8,7 @@
         {!!Form::open(array('route'=>'loan.store', 'class'=>'contact-panel'))!!}
         <div class="form-group col-md-4">
             <label for="loan_title">Loan Title</label>
-            <input type="text" name="loan_title" class="form-control custom-text" placeholder="Loan Title *" required>
+            <input type="text" name="loan_title" class="form-control custom-text" placeholder="Loan Title *" required autofocus>
         </div>
         <div class="form-group col-md-4">
             <label for="taken_amount">Loan Amount Taken</label>

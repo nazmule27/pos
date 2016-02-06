@@ -960,7 +960,13 @@ function insRow()
 
     $('#'+inp0.id).focus();
 };
-
+$(function(){
+    $(document).keyup(function(event){
+        if((event.which==89)) {
+            alert('y is typed ');
+        }
+    });
+})
 function stockDuePaidChange(){
     var pay_net_price = document.getElementById('pay_net_price');
     var pay_old_paid= document.getElementById('pay_old_paid');

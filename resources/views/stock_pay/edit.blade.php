@@ -35,7 +35,7 @@
                     <input type="text" name="pay_paid" id="pay_old_paid" class="form-control custom-text" value="{{$stock_pay->paid}}" placeholder="Selling price *" readonly required>
                 </div>
                 <div class="form-group col-md-2">
-                    <input type="text" name="paid" id="pay_paid" class="form-control custom-text" placeholder="Pay remaining amount *" onkeyup="stockDuePaidChange()" pattern="[0-9]{1,9}" required>
+                    <input type="text" name="paid" id="pay_paid" class="form-control custom-text" placeholder="Pay remaining amount *" onkeyup="stockDuePaidChange()" pattern="[0-9]{1,9}" autofocus required>
                 </div>
             </div>
         </div>

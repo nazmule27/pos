@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="c_name">Category</label>
-                    <input type="text" name="c_name" class="form-control custom-text" placeholder="Category Name *" required>
+                    <input type="text" name="c_name" class="form-control custom-text" placeholder="Category Name *" required autofocus>
                 </div>
             </div>
             <div class="col-md-12">
