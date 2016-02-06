@@ -960,13 +960,14 @@ function insRow()
 
     $('#'+inp0.id).focus();
 };
-$(function(){
-    $(document).keyup(function(event){
-        if((event.which==89)) {
-            alert('y is typed ');
-        }
-    });
-})
+function KeyPress(e) {
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode == 77 && evtobj.ctrlKey){
+        insRow();
+    }
+}
+document.onkeydown = KeyPress;
+
 function stockDuePaidChange(){
     var pay_net_price = document.getElementById('pay_net_price');
     var pay_old_paid= document.getElementById('pay_old_paid');
