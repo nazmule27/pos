@@ -15,6 +15,7 @@
                         <th>Installment Count</th>
                         <th>Installment Remaining</th>
                         <th>Installment Taka</th>
+                        <th>Owing</th>
                         <th width="110">Creation Date</th>
                     </tr>
                 </thead>
@@ -24,6 +25,9 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2"></th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -35,6 +39,7 @@
                         <td>{{$data->installment_count}}</td>
                         <td>{{$data->installment_remain}}</td>
                         <td>{{$data->installment_taka}}</td>
+                        <td>{{($data->installment_count)*($data->installment_taka)}}</td>
                         <td>{{$data->created_at}}</td>
                     </tr>
                     @endforeach

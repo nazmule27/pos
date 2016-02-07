@@ -108,8 +108,7 @@ class SalesController extends Controller
     public function update(Request $request, $id)
     {
         \DB::update('UPDATE sales SET paid='.$request->get('old_paid').'+'.$request->get('paid').', dues='.$request->get('due').'  WHERE id='.$id);
-        \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, updated_at) VALUES
-("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES ("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('sales');
 
     }

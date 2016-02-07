@@ -495,7 +495,7 @@ $('#expense').dataTable( {
 $('#loan').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
-    "order": [[6, "desc"]],
+    "order": [[7, "desc"]],
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
         // Remove the formatting to get integer data for summation
@@ -519,6 +519,22 @@ $('#loan').dataTable( {
             }, 0 );
         $( api.column( 1 ).footer() ).html(
             pageTotalLoan  +' ('+ totalLoan +')'
+        );
+        //
+        owing = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        pageOwing = api
+            .column( 6, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        $( api.column( 6 ).footer() ).html(
+            pageOwing  +' ('+ owing +')'
         );
     }
 });
