@@ -50,4 +50,4 @@
     </div>
 </div>
 
-@include('common.footer')
+@include('common.foot')

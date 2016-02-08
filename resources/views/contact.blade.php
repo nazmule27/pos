@@ -19,7 +19,7 @@
                 {!! csrf_field() !!}
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control custom-text" name="name" id="name" placeholder="Your Name *" autofocus required>
+                        <input type="text" class="form-control custom-text" name="name" id="name" placeholder="Your Name *" required>
                     </div>
                     <div class="form-group col-md-6">
                         <input type="email" class="form-control custom-text" name="email" id="email" placeholder="Your Email *" required>
@@ -46,12 +46,12 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript">
     var locations = [
-        ['Ayan Electric House', 24.7472612,90.3897278, 1]
+        ['Ayan Electric House', 24.7470839,90.3893562, 1]
     ];
 
     var map = new google.maps.Map(document.getElementById('googleMap'), {
         zoom: 15,
-        center: new google.maps.LatLng(24.7472612,90.3897278),
+        center: new google.maps.LatLng(24.7470839,90.3893562),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -73,4 +73,4 @@
         })(marker, i));
     }
 </script>
-@include('common.footer')
+@include('common.foot')

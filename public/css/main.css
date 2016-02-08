@@ -162,10 +162,12 @@ label {
     line-height:50px;
     font-size:20px;
     margin-right:10px;
+    font-weight: 900;
 }
 .roundIcon:hover {
     color:#666666;
     background:#00FF00;
+    text-decoration: none;
 }
 .bdMap {
     width:300px;
@@ -392,6 +394,14 @@ table.dataTable tfoot th {
 .carousel-indicators {
     bottom: 0;
 }
+footer {
+    background: rgb(1, 1, 42) none repeat scroll 0 0;
+    color: #ccc;
+}
+.no-bg {
+    background: none;
+    color: #666;
+}
 @media (max-width: 992px) {
     .padT60 {
         padding-top: 110px;
@@ -399,7 +409,6 @@ table.dataTable tfoot th {
     .navbar-inverse .navbar-brand {
         width: 100%;
     }
-
 }
 @media (max-width: 768px) {
 
