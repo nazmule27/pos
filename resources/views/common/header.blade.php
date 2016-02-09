@@ -6,9 +6,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Ayan Electric House POS</title>
+    <title>Ayan Electric House</title>
     <link rel="icon" type="image/ico" href="{{ URL::asset('img/logo.png') }}"/>
-    <meta name="description" content="">
+    <meta name="description" content="Ayan Electric House is a electronics parts supplier and retailer">
+    <meta name="keywords" content="Ayan, Electric, House, Mymensingh">
+    <meta name="author" content="Nazmul Haque">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('css/bootstrap-theme.min.css') }}" />

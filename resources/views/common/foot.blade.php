@@ -4,17 +4,17 @@
             <div class="col-md-3 col-sm-6">
                 <h3>Shop Address</h3>
                 <hr class="marginB10">
-                <p>Akua warless Rood, Mymensingh, Bangladesh <br/> <strong>Email:</strong> ayanelectric1@gmail.com <br/><strong>Mobile</strong><br/>01730 867797 <br/> 01730 867796</p>
+                <p>Akua warless Rood, Mymensingh, Bangladesh <br/> <strong>Email:</strong> ayanelectric1@gmail.com <br/><strong>Mobile</strong><br/>01730 867796</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <h3>Technical Help</h3>
                 <hr class="marginB10">
-                <p><strong>Mobile: </strong> 01730 867798</p>
+                <p><strong>Mobile: </strong> 01730 867794</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <h3>Shop Seller</h3>
                 <hr class="marginB10">
-                <p><strong>Mobile: </strong>01730 867796</p>
+                <p><strong>Mobile: </strong>01730 867797</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <h3>Social Toutch</h3>

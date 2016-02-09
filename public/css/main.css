@@ -395,12 +395,15 @@ table.dataTable tfoot th {
     bottom: 0;
 }
 footer {
-    background: rgb(1, 1, 42) none repeat scroll 0 0;
+    background: rgb(70, 70, 80) none repeat scroll 0 0;
     color: #ccc;
 }
 .no-bg {
     background: none;
     color: #666;
+}
+#googleMap {
+    margin-bottom: 15px;
 }
 @media (max-width: 992px) {
     .padT60 {
