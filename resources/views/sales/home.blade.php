@@ -19,7 +19,7 @@
                         <th>Dues</th>
                         <th>Soled By</th>
                         <th>Selling Date</th>
-                        <th width="230">Action</th>
+                        <th width="160">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
