@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <label class="control-label">Date:</label>
-                            <input type="text" class="form-control" name="datetimepicker" id="datePicker" readonly />
+                            <input type="text" class="form-control" name="datetimepicker" value="{{date('Y-m-d H:i:s')}}" readonly />
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label">Invoice No:</label>

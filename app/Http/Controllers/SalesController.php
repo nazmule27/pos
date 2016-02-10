@@ -63,9 +63,15 @@ class SalesController extends Controller
             }
         }
 
+        $invoice= \DB::select('SELECT SUBSTR(s.invoice_no, 6) AS invoice_no FROM sales s ORDER BY s.id DESC LIMIT 1');
+        if(isset($invoice[0]->invoice_no)) {
+            $inv=$invoice[0]->invoice_no;
+        } else $inv=0;
+        $next_invoice=date('Y-').(string)(($inv)+1);
+
         $input = array(
             'total_price' => $request->get('total_price'),
-            'invoice_no' => $request->get('invoiceNo'),
+            'invoice_no' => $next_invoice,
             'customer_id' => $request->get('customerName'),
             'customer_address' => $request->get('address'),
             'categories' => $categories,
@@ -84,7 +90,7 @@ class SalesController extends Controller
             'sold_by' => Auth::user()->name,
         );
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
-("'.$request->get('invoiceNo').'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+("'.$next_invoice.'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         Sales::create($input);
         session()->put('sale_input', $input);
         return redirect('/prints');
