@@ -405,6 +405,9 @@ footer {
 #googleMap {
     margin-bottom: 15px;
 }
+.padding-right-3 {
+    padding-right: 3px;
+}
 @media (max-width: 992px) {
     .padT60 {
         padding-top: 110px;

@@ -51,13 +51,12 @@
                         <td>{{$data->sold_by}}</td>
                         <td>{{$data->created_at}}</td>
                         <td>
-                            {!!Form::open(array('route' => ['sales.destroy', $data->id], 'class'=>'pull-left', 'method'=>'delete', 'onclick'=>'return confirm("Are you sure you want to delete this item?");'))!!}
+                            {!!Form::open(array('route' => ['sales.destroy', $data->id], 'class'=>'pull-left padding-right-3', 'method'=>'delete', 'onclick'=>'return confirm("Are you sure you want to delete this item?");'))!!}
                             {!!Form::hidden('invoice_no', $data->invoice_no)!!}
                             {!!Form::hidden('products', $data->products)!!}
                             {!!Form::hidden('quantity', $data->quantity)!!}
                             {!!Form::submit('Return', ['class'=>'btn btn-danger'])!!}
                             {!!Form::close()!!}
-                            &nbsp;
                             <a class="btn btn-warning" href="{{route('sales.show', $data->id)}}">Exch.</a>
                             <a class="btn btn-success" href="{{route('sales.edit', $data->id)}}">Due</a>
                         </td>
