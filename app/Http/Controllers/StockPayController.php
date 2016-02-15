@@ -32,7 +32,7 @@ class StockPayController extends Controller
 
     public function update(Request $request, $id){
         \DB::update('UPDATE stock_pay SET paid=paid+'.$request->get('paid').', due='.$request->get('due').', updated_at="'.date('Y-m-d H:i:s').'" WHERE id='.$id);
-        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Vendor bill (Due)",
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Vendor Bill (Due)",
 "'.$request->get('p_name').'", "'.$request->get('paid').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('stock_pay');
     }

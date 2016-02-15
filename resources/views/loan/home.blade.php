@@ -22,8 +22,7 @@
                 <tfoot>
                 <tr>
                     <th>Total: </th>
-                    <th></th>
-                    <th></th>
+                    <th colspan="2"></th>
                     <th></th>
                     <th></th>
                     <th></th>
