@@ -46,7 +46,7 @@
     </div>
     <div class="row> paddingT20">
         <h3><b>Welcome to Ayan Electric House</b></h3>
-        <p>Ayan Electric House is a provider and reseller of all king electric equipment. It is established in 2014. Propitar Md. Alam Sarker.</p>
+        <p>Ayan Electric House is a provider and reseller of all kinds of electric equipment. It is established in 2014. Proprietor Md. Alam Sarker.</p>
     </div>
 </div>
 
