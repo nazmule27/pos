@@ -47,6 +47,9 @@
                                 <a href="{{route('sales.index')}}">Sales</a>
                             </li>
                             <li>
+                                <a href="{{url('return_list')}}">Return List</a>
+                            </li>
+                            <li>
                                 <a href="{{url('/report/payment')}}">Payments</a>
                             </li>
                             <li>

@@ -29,7 +29,7 @@
                         <td>{{$data->payment_title}}</td>
                         <td>{{$data->purpose}}</td>
                         <td>{{$data->amount}}</td>
-                        <td>{{$data->created_at}}</td>
+                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>

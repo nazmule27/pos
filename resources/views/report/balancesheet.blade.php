@@ -36,7 +36,7 @@
                         <td>{{$data->address}}</td>
                         <td>{{$data->dr}}</td>
                         <td>{{$data->cr}}</td>
-                        <td>{{$data->created_at}}</td>
+                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
                     </tr>
                     <?php $i++;?>
                     @endforeach

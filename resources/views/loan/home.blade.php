@@ -39,7 +39,7 @@
                         <td>{{$data->installment_remain}}</td>
                         <td>{{$data->installment_taka}}</td>
                         <td>{{($data->installment_count)*($data->installment_taka)}}</td>
-                        <td>{{$data->created_at}}</td>
+                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>

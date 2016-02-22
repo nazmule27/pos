@@ -1,4 +1,3 @@
-window.onload = function(){ document.getElementById("loading").style.display = "none" }
 //breakdown the labels into single character spans
 $(".flp label").each(function(){
     var sop = '<span class="ch">'; //span opening

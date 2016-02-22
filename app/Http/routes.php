@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('product', 'ProductController');
     Route::resource('sales', 'SalesController');
     Route::any('sales/exchange/{id}', 'SalesController@exchange');
+    Route::any('return_list', 'SalesController@return_list');
     Route::get('/prints', function (){
         return view('sales.print');
     });

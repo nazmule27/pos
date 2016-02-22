@@ -20,6 +20,11 @@ class SalesController extends Controller
         $all_data= \DB::select('select s.* from sales s');
         return view('sales.home', ['all_data' => $all_data]);
     }
+    public function return_list()
+    {
+        $all_data= \DB::select('select * from return_list');
+        return view('sales.returns', ['all_data' => $all_data]);
+    }
     public function create()
     {
         $categories = \DB::table('product_category')->lists('c_name', 'cid');
@@ -128,6 +133,7 @@ class SalesController extends Controller
             \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'"');
         }
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoice_no').'"');
+        \DB::insert('INSERT INTO return_list SELECT `id`, `invoice_no`, `customer_id`, `customer_address`, `categories`, `products`, `unit_price`, `quantity`, `amount`, `total_price`, `vat`, `total_price_vat`, `discount`, `discount_price`, `paid`, `dues`, `sold_by`, '.'"'.Auth::user()->name.'"'.' as return_by,  `created_at`, "'.date('Y-m-d H:i:s').'" as updated_at FROM sales WHERE id='.'"'.$id.'"');
         $data=Sales::findOrFail($id);
         $data->delete();
         return redirect('sales');
