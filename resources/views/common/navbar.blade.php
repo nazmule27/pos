@@ -56,6 +56,9 @@
                                 <a href="{{route('stock_pay.index')}}">Stock Bill Pay</a>
                             </li>
                             <li>
+                                <a href="{{route('balancesheet.create')}}">Net Profit Sheet</a>
+                            </li>
+                            <li>
                                 <a href="{{route('balancesheet.index')}}">Balance Sheet</a>
                             </li>
                         </ul>

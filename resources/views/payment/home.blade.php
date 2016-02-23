@@ -12,7 +12,7 @@
                         <th>Payment Title</th>
                         <th>Address</th>
                         <th>Amount</th>
-                        <th width="110">Payment Date</th>
+                        <th width="130">Payment Date</th>
                     </tr>
                 </thead>
                 <tfoot>

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Payment;
 use Response;
+use Auth;
 
 class PaymentController extends Controller
 {
@@ -27,6 +28,8 @@ class PaymentController extends Controller
         /*$input=$request->all();
         Payment::create($input);*/
         \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "'.$request->get('amount').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
+("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "0", "'.$request->get('amount').'", "Valid", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
 
         return redirect('payment');
     }

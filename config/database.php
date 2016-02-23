@@ -56,8 +56,8 @@ return [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'ayanelectric_pos'),
-            'username'  => env('DB_USERNAME', 'root'), //root_pos
-            'password'  => env('DB_PASSWORD',''), //Ayan@321
+            'username'  => 'root', //root_pos
+            'password'  => '', //Ayan@321
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

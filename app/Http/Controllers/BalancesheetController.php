@@ -22,7 +22,8 @@ SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, crea
     }
     public function create()
     {
-
+        $all_data = \DB::select('SELECT transaction_title, address, credit, debit, status, updated_at from net_balance');
+        return view('report.netbalancesheet', ['all_data' => $all_data]);
     }
     public function store(Request $request)
     {

@@ -92,10 +92,13 @@ class SalesController extends Controller
             'discount_price' => $request->get('discountAmount'),
             'paid' => $request->get('paid'),
             'dues' => $request->get('dues'),
+            'profit' => $request->get('net_profit'),
             'sold_by' => Auth::user()->name,
         );
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
 ("'.$next_invoice.'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
+("'.'Sales Profit'.'", "'.$next_invoice.'",  "'.$request->get('net_profit').'", "0", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         Sales::create($input);
         session()->put('sale_input', $input);
         return redirect('/prints');

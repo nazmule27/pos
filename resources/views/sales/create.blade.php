@@ -106,6 +106,9 @@
                             <p class="peraCon">Taka</p>
                             <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" required>
                             <p class="peraCon">Paid:</p>
+                            <input type="hidden" name="net_bought_price" id="net_bought_price">
+                            <input class="form-control width120 pull-right net-profit" type="text" name="net_profit" id="net_profit" readonly required>
+                            <p class="peraCon">Net Profit:</p>
                         </div>
                     </div>
                     <div class="row">
@@ -118,7 +121,7 @@
                     <legend></legend>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                             <input type="submit" class="btn btn-success pull-right" value="Submit" />
                         </div>
                     </div>

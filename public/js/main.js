@@ -768,6 +768,7 @@ function getPrice(id, e){
 function quantityChange(id) {
     var  id = id.replace( /\D+/g, '');
 
+    var buying_price = document.getElementById('buying_price'+id);
     var price = document.getElementById('price'+id);
     var amount= document.getElementById('amount'+id);
     var quantity= document.getElementById('quantity'+id);
@@ -775,6 +776,7 @@ function quantityChange(id) {
     var total_price= document.getElementById('total_price');
     var totalAmountVat= document.getElementById('totalAmountVat');
     var vat= document.getElementById('vat');
+    var net_bought_price= document.getElementById('net_bought_price');
 
     if (quantity.value!='') {
         amount.value=((price.value)*(quantity.value)).toFixed(2);
@@ -784,11 +786,14 @@ function quantityChange(id) {
         total_price.value='';
     }
     var subV=0;
+    var totalB=0;
     for(var i=1; i<=id; i++ ) {
         subV=parseFloat(subV)+parseFloat(document.getElementById('amount'+i).value);
+        totalB=parseFloat(totalB)+((parseFloat(document.getElementById('buying_price'+i).value))*(parseFloat(document.getElementById('quantity'+i).value)));
     }
 
     total_price.value=subV;
+    net_bought_price.value=totalB.toFixed(2);
 
     if (quantity.value!='') {
         totalAmountVat.value=parseFloat(total_price.value)+parseFloat(vat.value);
@@ -840,12 +845,16 @@ function paidChange() {
     var paid= document.getElementById('paid');
     var dues= document.getElementById('dues');
     var discountAmount= document.getElementById('discountAmount');
+    var net_bought_price= document.getElementById('net_bought_price');
+    var net_profit= document.getElementById('net_profit');
 
     if (discountAmount.value!='') {
         dues.value=((discountAmount.value)-((paid.value))).toFixed(0);
+        net_profit.value=((discountAmount.value)-((net_bought_price.value))).toFixed(0);
     }
     else {
         dues.value='';
+        net_profit.value='';
     }
 };
 function stockGetPrice(id, e){

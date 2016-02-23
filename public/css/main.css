@@ -408,6 +408,14 @@ footer {
 .padding-right-3 {
     padding-right: 3px;
 }
+.net-profit {
+    margin-right: 264px;
+    height: 36px;
+    text-align: center;
+    width: 80px;
+}
+
+
 @media (max-width: 992px) {
     .padT60 {
         padding-top: 110px;
