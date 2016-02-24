@@ -14,8 +14,9 @@ class LoanController extends Controller
 {
     public function index()
     {
-        $all_data=Loan::all();
+        //$all_data=Loan::all();
         //$all_data = \DB::select('SELECT l.* FROM loan l');
+        $all_data= \DB::select('SELECT * FROM loan s where status="'."active".'"');
         return view('loan.home', ['all_data' => $all_data]);
     }
 
@@ -47,10 +48,26 @@ class LoanController extends Controller
 
     public function edit($id)
     {
-
+        if(Auth::user()->role==='superadmin'){
+            $loan=Loan::findOrFail($id);
+            //$loan= \DB::select('SELECT * FROM loan s where lid='.$id);
+            return view('loan.edit', ['loan'=>$loan]);
+        }
+        else{
+            return redirect('auth/login');
+        }
     }
     public function update(Request $request, $id)
     {
+        if(Auth::user()->role==='superadmin'){
+            $input=$request->all();
+            $data=Loan::findOrFail($id);
+            $data->update($input);
+            return redirect('loan');
+        }
+        else{
+            return redirect('auth/login');
+        }
 
     }
     public function destroy($id)
