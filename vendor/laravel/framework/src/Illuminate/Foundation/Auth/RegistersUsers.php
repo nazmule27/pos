@@ -16,7 +16,18 @@ trait RegistersUsers
      */
     public function getRegister()
     {
-        return view('auth.register');
+        if(isset(Auth::user()->role)){
+            if(Auth::user()->role==='superadmin'){
+                return view('auth.register');
+            }
+            else{
+                return redirect('auth/login');
+            }
+        }
+        else{
+            return redirect('auth/login');
+        }
+
     }
 
     /**

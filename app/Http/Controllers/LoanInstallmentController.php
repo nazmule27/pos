@@ -15,7 +15,7 @@ class LoanInstallmentController extends Controller
     public function index()
     {
         //$all_data=Product::all();
-        $all_data = \DB::select('SELECT li.*, l.loan_title FROM loan_installment li, loan l where l.lid=li.lid');
+        $all_data = \DB::select('SELECT li.*, l.loan_title FROM loan_installment li, loan l where l.lid=li.lid order by li.created_at desc');
         return view('installment.home', ['all_data' => $all_data]);
     }
     public function create()

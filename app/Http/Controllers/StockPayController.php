@@ -13,7 +13,8 @@ use Auth;
 class StockPayController extends Controller
 {
     public function index(){
-        $all_data=StockPay::all();
+        //$all_data=StockPay::all();
+        $all_data= \DB::select('select s.* from stock_pay s order by updated_at desc');
         return view('stock_pay.home', ['all_data' => $all_data]);
     }
     public function create(){

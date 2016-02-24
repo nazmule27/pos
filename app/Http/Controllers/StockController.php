@@ -13,7 +13,7 @@ use Auth;
 class StockController extends Controller
 {
     public function index(){
-        $all_data = \DB::select('SELECT c.`c_name`, p.`p_name`, ROUND(p.`buying_price`,2) as buying_price, ROUND(p.`selling_price`,2) as selling_price, ROUND(s.`quantity`,2) as quantity, s.`updated_at` FROM stock s, product p, product_category c WHERE s.`pid`=p.`pid` AND s.`cid`=c.`cid` ORDER BY s.`quantity` DESC, c.`c_name`, p.`p_name`');
+        $all_data = \DB::select('SELECT c.`c_name`, p.`p_name`, ROUND(p.`buying_price`,2) as buying_price, ROUND(p.`selling_price`,2) as selling_price, ROUND(s.`quantity`,2) as quantity, s.`updated_at` FROM stock s, product p, product_category c WHERE s.`pid`=p.`pid` AND s.`cid`=c.`cid` ORDER BY s.`updated_at` DESC');
         return view('stock.home', ['all_data' => $all_data]);
     }
     public function create(){

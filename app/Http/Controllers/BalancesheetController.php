@@ -17,12 +17,12 @@ class BalancesheetController extends Controller
         //$all_data=Product::all();
         $all_data = \DB::select('SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
 UNION ALL
-SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at');
+SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at desc');
         return view('report.balancesheet', ['all_data' => $all_data]);
     }
     public function create()
     {
-        $all_data = \DB::select('SELECT transaction_title, address, credit, debit, status, updated_at from net_balance');
+        $all_data = \DB::select('SELECT transaction_title, address, credit, debit, status, updated_at from net_balance ORDER BY created_at desc');
         return view('report.netbalancesheet', ['all_data' => $all_data]);
     }
     public function store(Request $request)

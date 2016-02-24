@@ -17,12 +17,12 @@ class SalesController extends Controller
     public function index()
     {
         //$all_data=Stock::all();
-        $all_data= \DB::select('select s.* from sales s');
+        $all_data= \DB::select('select s.* from sales s order by created_at desc');
         return view('sales.home', ['all_data' => $all_data]);
     }
     public function return_list()
     {
-        $all_data= \DB::select('select * from return_list');
+        $all_data= \DB::select('select * from return_list order by created_at desc');
         return view('sales.returns', ['all_data' => $all_data]);
     }
     public function create()
@@ -102,7 +102,6 @@ class SalesController extends Controller
         Sales::create($input);
         session()->put('sale_input', $input);
         return redirect('/prints');
-
     }
     public function show($id)
     {

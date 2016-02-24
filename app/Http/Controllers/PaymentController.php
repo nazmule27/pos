@@ -15,7 +15,7 @@ class PaymentController extends Controller
     public function index()
     {
         //$all_data=Product::all();
-        $all_data = \DB::select('SELECT p.* FROM payment p');
+        $all_data = \DB::select('SELECT p.* FROM payment p order by created_at desc');
         return view('payment.home', ['all_data' => $all_data]);
     }
     public function create()
