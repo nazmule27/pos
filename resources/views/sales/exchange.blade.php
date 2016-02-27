@@ -120,6 +120,9 @@
                             <p class="peraCon">Taka</p>
                             <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" value="{{$invoice[0]->paid}}" autofocus required>
                             <p class="peraCon">Paid:</p>
+                            <input type="hidden" name="net_bought_price" id="net_bought_price">
+                            <input class="form-control width120 pull-right net-profit" type="text" name="net_profit" id="net_profit" value="{{$invoice[0]->profit}}" readonly required>
+                            <p class="peraCon">Net Profit:</p>
                         </div>
                     </div>
                     <div class="row">

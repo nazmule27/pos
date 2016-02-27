@@ -135,6 +135,7 @@ class SalesController extends Controller
             \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'"');
         }
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoice_no').'"');
+        \DB::delete('DELETE FROM net_balance WHERE address='.'"'.$request->get('invoice_no').'"');
         \DB::insert('INSERT INTO return_list SELECT `id`, `invoice_no`, `customer_id`, `customer_address`, `categories`, `products`, `unit_price`, `quantity`, `amount`, `total_price`, `vat`, `total_price_vat`, `discount`, `discount_price`, `paid`, `dues`, `sold_by`, '.'"'.Auth::user()->name.'"'.' as return_by,  `created_at`, "'.date('Y-m-d H:i:s').'" as updated_at FROM sales WHERE id='.'"'.$id.'"');
         $data=Sales::findOrFail($id);
         $data->delete();
@@ -200,6 +201,7 @@ class SalesController extends Controller
             'discount_price' => $request->get('discountAmount'),
             'paid' => $request->get('paid'),
             'dues' => $request->get('dues'),
+            'profit' => $request->get('net_profit'),
             'sold_by' => Auth::user()->name,
         );
 
@@ -209,6 +211,9 @@ class SalesController extends Controller
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoiceNo').'"');
         \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
 ("'.$request->get('invoiceNo').'", "'.'Sales (Exchange)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::delete('DELETE FROM net_balance WHERE address='.'"'.$request->get('invoiceNo').'"');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
+("'.'Sales Profit (Exchange)'.'", "'.$request->get('invoiceNo').'",  "'.$request->get('net_profit').'", "0", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         session()->put('sale_input', $input);
         return redirect('/prints');
     }
