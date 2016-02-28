@@ -6,7 +6,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-            <table id="balanced" class="display " cellspacing="0" width="100%" >
+            <table id="sheet" class="display " cellspacing="0" width="100%" >
                 <thead>
                     <tr>
                         <th>SL</th>

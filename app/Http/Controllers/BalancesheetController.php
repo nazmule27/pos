@@ -15,9 +15,10 @@ class BalancesheetController extends Controller
     public function index()
     {
         //$all_data=Product::all();
-        $all_data = \DB::select('SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
+        $all_data = \DB::select('SELECT @a:=@a+1 sl, xx.* FROM
+(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
 UNION ALL
-SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at desc');
+SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
         return view('report.balancesheet', ['all_data' => $all_data]);
     }
     public function create()

@@ -664,6 +664,60 @@ $('#balanced').dataTable( {
         );
     }
 });
+$('#sheet').dataTable( {
+    /*"processing": true,
+    "serverSide": true,
+    "ajax": "/balance",*/
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "pagingType": "full_numbers",
+    "order": [[5, "desc"]],
+    "footerCallback": function ( row, data, start, end, display ) {
+        var api = this.api(), data;
+        // Remove the formatting to get integer data for summation
+        var intVal = function ( i ) {
+            return typeof i === 'string' ?
+            i.replace(/[\$,-]/g, '')*1 :
+                typeof i === 'number' ?
+                    i : 0;
+        };
+        totalDr = api
+            .column( 3 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        pageTotaDr = api
+            .column( 3, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        $( api.column( 3 ).footer() ).html(
+            pageTotaDr +' ('+ totalDr +')'
+        );
+        //
+        totalCr = api
+            .column( 4 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        pageTotaCr = api
+            .column( 4, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+        $( api.column( 4 ).footer() ).html(
+            pageTotaCr +' ('+ totalCr +')'
+        );
+
+
+        $( api.column( 5 ).footer() ).html(
+            'Balance = '+(pageTotaCr-pageTotaDr) +' ('+ (totalCr-totalDr) +')'
+        );
+    }
+});
 $('#stock_pid').on('change',function(e){
     var pid = e.target.value;
     $.get('/ajax-product-stock?pid='+pid, function(data){

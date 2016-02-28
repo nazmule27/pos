@@ -87,3 +87,10 @@ Route::get('/ajax-loan-installment', function (){
     $loan=Loan::where('lid', '=', $lid)->get();
     return Response::json($loan);
 });
+Route::get('/balance', function (){
+    $sheet=\DB::select('SELECT @a:=@a+1 sl, xx.* FROM
+(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
+UNION ALL
+SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
+    return Response::json($sheet);
+});
