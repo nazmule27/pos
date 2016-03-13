@@ -49,7 +49,7 @@
                         <td>{{$data->paid}}</td>
                         <td>{{$data->dues}}</td>
                         <td>{{$data->sold_by}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->created_at))}}</td>
                         <td>
                             {!!Form::open(array('route' => ['sales.destroy', $data->id], 'class'=>'pull-left padding-right-3', 'method'=>'delete', 'onclick'=>'return confirm("Are you sure you want to delete this item?");'))!!}
                             {!!Form::hidden('invoice_no', $data->invoice_no)!!}

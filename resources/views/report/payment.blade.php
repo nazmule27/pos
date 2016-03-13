@@ -35,7 +35,7 @@
                         <td>{{$data->payment_title}}</td>
                         <td>{{$data->purpose}}</td>
                         <td>{{$data->amount}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->updated_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
                         <td>{{$data->status}}</td>
                     </tr>
                     <?php $i++;?>

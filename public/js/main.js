@@ -44,7 +44,7 @@ $(".flp textarea").focus(function(){
 $('#stock_pay').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
-    "order": [[ 7, "desc" ]],
+    "order": [[ 8, "desc" ]],
     "footerCallback": function ( row, data, start, end, display ) {
         var api = this.api(), data;
         // Remove the formatting to get integer data for summation
@@ -57,27 +57,6 @@ $('#stock_pay').dataTable( {
 
         // Total over all pages
         totalTaka = api
-            .column( 2 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-
-        // Total over this page
-        pageTotalTaka = api
-            .column( 2, { page: 'current'} )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-
-        // Update footer
-        $( api.column( 2 ).footer() ).html(
-            pageTotalTaka +' ('+ totalTaka +')'
-        );
-        //
-        // Total over all pages
-        totalDiscount = api
             .column( 3 )
             .data()
             .reduce( function (a, b) {
@@ -85,7 +64,7 @@ $('#stock_pay').dataTable( {
             }, 0 );
 
         // Total over this page
-        pageTotalDiscount = api
+        pageTotalTaka = api
             .column( 3, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
@@ -94,11 +73,11 @@ $('#stock_pay').dataTable( {
 
         // Update footer
         $( api.column( 3 ).footer() ).html(
-            pageTotalDiscount+' ('+ totalDiscount+')'
+            pageTotalTaka +' ('+ totalTaka +')'
         );
         //
         // Total over all pages
-        totalTakaSelling = api
+        totalDiscount = api
             .column( 4 )
             .data()
             .reduce( function (a, b) {
@@ -106,7 +85,7 @@ $('#stock_pay').dataTable( {
             }, 0 );
 
         // Total over this page
-        pageTotalTakaSelling = api
+        pageTotalDiscount = api
             .column( 4, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
@@ -115,11 +94,11 @@ $('#stock_pay').dataTable( {
 
         // Update footer
         $( api.column( 4 ).footer() ).html(
-            pageTotalTakaSelling +' ('+ totalTakaSelling +')'
+            pageTotalDiscount+' ('+ totalDiscount+')'
         );
         //
         // Total over all pages
-        totalPaid = api
+        totalTakaSelling = api
             .column( 5 )
             .data()
             .reduce( function (a, b) {
@@ -127,7 +106,7 @@ $('#stock_pay').dataTable( {
             }, 0 );
 
         // Total over this page
-        pageTotalPaid = api
+        pageTotalTakaSelling = api
             .column( 5, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
@@ -136,11 +115,11 @@ $('#stock_pay').dataTable( {
 
         // Update footer
         $( api.column( 5 ).footer() ).html(
-            pageTotalPaid+' ('+ totalPaid  +')'
+            pageTotalTakaSelling +' ('+ totalTakaSelling +')'
         );
         //
         // Total over all pages
-        totalDue = api
+        totalPaid = api
             .column( 6 )
             .data()
             .reduce( function (a, b) {
@@ -148,7 +127,7 @@ $('#stock_pay').dataTable( {
             }, 0 );
 
         // Total over this page
-        pageTotalDue = api
+        pageTotalPaid = api
             .column( 6, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
@@ -157,6 +136,27 @@ $('#stock_pay').dataTable( {
 
         // Update footer
         $( api.column( 6 ).footer() ).html(
+            pageTotalPaid+' ('+ totalPaid  +')'
+        );
+        //
+        // Total over all pages
+        totalDue = api
+            .column( 7 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageTotalDue = api
+            .column( 7, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 7 ).footer() ).html(
             pageTotalDue+' ('+ totalDue +')'
         );
     }

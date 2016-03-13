@@ -14,7 +14,7 @@
                         <th>Installment Taka Amount</th>
                         <th>Installment Count</th>
                         <th>Dr./Cr.</th>
-                        <th width="110">Creation Date</th>
+                        <th width="120">Creation Date</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -33,7 +33,7 @@
                         <td>{{$data->installment_amount}}</td>
                         <td>{{$data->installment_count}}</td>
                         <td>{{$data->drcr}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->created_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>

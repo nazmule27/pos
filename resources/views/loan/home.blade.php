@@ -16,7 +16,7 @@
                         <th>Installment Remaining</th>
                         <th>Installment Taka</th>
                         <th>Owing</th>
-                        <th width="110">Creation Date</th>
+                        <th width="120">Creation Date</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
                         <td>{{$data->installment_remain}}</td>
                         <td>{{$data->installment_taka}}</td>
                         <td>{{($data->installment_count)*($data->installment_taka)}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->created_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->created_at))}}</td>
                         <td><a class="btn btn-default" href="{{route('loan.edit', $data->lid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
                     </tr>
                     @endforeach

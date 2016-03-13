@@ -41,7 +41,7 @@
                         <td>{{$data->quantity}}</td>
                         <td>{{($data->quantity)*($data->buying_price)}}</td>
                         <td>{{($data->quantity)*($data->selling_price)}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->updated_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>

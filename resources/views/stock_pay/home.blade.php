@@ -9,6 +9,7 @@
             <table id="stock_pay" class="display " cellspacing="0" width="100%" >
                 <thead>
                     <tr>
+                        <th>SL No</th>
                         <th>Vendor Name</th>
                         <th>Vendor Address</th>
                         <th>Total Price</th>
@@ -31,11 +32,13 @@
                     <th> </th>
                     <th> </th>
                     <th> </th>
+                    <th> </th>
                 </tr>
                 </tfoot>
                 <tbody>
                     @foreach($all_data as $data)
                     <tr>
+                        <td>{{$data->id}}</td>
                         <td>{{$data->vendor_name}}</td>
                         <td>{{$data->vendor_address}}</td>
                         <td>{{$data->total_price}}</td>
@@ -43,7 +46,7 @@
                         <td>{{$data->net_price}}</td>
                         <td>{{$data->paid}}</td>
                         <td>{{$data->due}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->updated_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
                         <td><a class="btn btn-default" href="{{route('stock_pay.edit', $data->id)}}"><i class="glyphicon glyphicon-pencil"></i>Pay</a></td>
                     </tr>
                     @endforeach

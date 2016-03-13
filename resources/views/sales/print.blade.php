@@ -103,7 +103,7 @@
         </div>
         <div class="full-with">
             <span >----------------------</span>
-            <span >&nbsp; &nbsp;  ----------------------------</span>
+            <span >&nbsp; &nbsp;  --------------------------</span>
         </div>
         <div class="full-with">
             <span>Signature of Saler</span>

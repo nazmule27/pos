@@ -36,7 +36,7 @@
                         <td>{{$data->address}}</td>
                         <td>{{$data->debit}}</td>
                         <td>{{$data->credit}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->updated_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
                     </tr>
                     <?php $i++;?>
                     @endforeach
