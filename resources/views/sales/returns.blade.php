@@ -47,7 +47,7 @@
                         <td>{{$data->paid}}</td>
                         <td>{{$data->dues}}</td>
                         <td>{{$data->return_by}}</td>
-                        <td>{{date('d/m/Y g:i a',strtotime($data->updated_at))}}</td>
+                        <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
                     </tr>
                     @endforeach
                 </tbody>
