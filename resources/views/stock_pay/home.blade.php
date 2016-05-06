@@ -9,7 +9,7 @@
             <table id="stock_pay" class="display " cellspacing="0" width="100%" >
                 <thead>
                     <tr>
-                        <th>SL No</th>
+                        <th>Bill No</th>
                         <th>Vendor Name</th>
                         <th>Vendor Address</th>
                         <th>Total Price</th>
@@ -38,7 +38,7 @@
                 <tbody>
                     @foreach($all_data as $data)
                     <tr>
-                        <td>{{$data->id}}</td>
+                        <td>{{$data->bill_no}}</td>
                         <td>{{$data->vendor_name}}</td>
                         <td>{{$data->vendor_address}}</td>
                         <td>{{$data->total_price}}</td>

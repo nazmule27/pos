@@ -9,6 +9,10 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="form-group col-md-2">
+                    <label for="p_name">Bill No</label>
+                    <input type="text" name="p_name" class="form-control custom-text" value="{{$stock_pay->bill_no}}" placeholder="Buying price *" readonly required>
+                </div>
+                <div class="form-group col-md-2">
                     <label for="p_name">Vendor Name</label>
                     <input type="text" name="p_name" class="form-control custom-text" value="{{$stock_pay->vendor_name}}" placeholder="Buying price *" readonly required>
                 </div>
@@ -16,7 +20,7 @@
                     <label for="total_price">Total Price</label>
                     <input type="text" name="total_price" class="form-control custom-text" value="{{$stock_pay->total_price}}" placeholder="Buying price *" readonly required>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-2">
                     <label for="selling_price">Discount</label>
                     <input type="text" name="discount" class="form-control custom-text" value="{{$stock_pay->discount}}" placeholder="Selling price *" readonly required>
                 </div>

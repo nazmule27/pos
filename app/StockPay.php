@@ -8,5 +8,5 @@ class StockPay extends Model
 {
     protected $table="stock_pay";
     protected $primaryKey="id";
-    protected $fillable=['id', 'pid', 'total_price', 'discount', 'net_price', 'paid', 'due'];
+    protected $fillable=['id', 'bill_no', 'pid', 'total_price', 'discount', 'net_price', 'paid', 'due', 'bill_date'];
 }

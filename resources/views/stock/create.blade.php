@@ -9,13 +9,21 @@
             {!!Form::open(array('route'=>'stock.store', 'class'=>'contact-panel','onsubmit'=>'return validateFormStock()', 'id'=>'sales-table'))!!}
             <fieldset>
                 <div class="row">
+                    <div class="col-sm-2">
+                        <label class="control-label" for="customerName">Bill No: </label>
+                        <input type="text" class="form-control" name="bill_no" id="bill_no" autofocus required/>
+                    </div>
                     <div class="col-sm-3">
                         <label class="control-label" for="customerName">Vendor Name: </label>
-                        <input type="text" class="form-control" name="vendor_name" id="vendor_name" autofocus required/>
+                        <input type="text" class="form-control" name="vendor_name" id="vendor_name" required/>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <label class="control-label">Address/Mobile:</label>
                         <input type="text" class="form-control" name="vendor_address" id="vendor_address" required />
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Bill Date:</label>
+                        <input type="text" id="bill_date" class="form-control" name="bill_date" value="{{date('Y-m-d')}}" readonly />
                     </div>
                 </div>
 
@@ -107,7 +115,7 @@
                 <legend></legend>
                 <div class="row">
                     <div class="col-sm-12">
-                        <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         <input type="submit" class="btn btn-success pull-right" value="Submit" />
                     </div>
                 </div>

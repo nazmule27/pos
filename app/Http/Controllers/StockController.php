@@ -35,8 +35,8 @@ class StockController extends Controller
                 }
             }
         }
-        \DB::insert('INSERT INTO stock_pay(vendor_name, vendor_address, total_price, discount, net_price, paid, due, created_at, updated_at) VALUES ("'.$request->get('vendor_name').'", "'.$request->get('vendor_address').'",
-"'.$request->get('total_price').'", "'.$request->get('discount').'", "'.$request->get('discountAmount').'", "'.$request->get('paid').'", "'.$request->get('dues').'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('INSERT INTO stock_pay(bill_no ,vendor_name, vendor_address, total_price, discount, net_price, paid, due, bill_date, created_at, updated_at) VALUES ("'.$request->get('bill_no').'", "'.$request->get('vendor_name').'", "'.$request->get('vendor_address').'",
+"'.$request->get('total_price').'", "'.$request->get('discount').'", "'.$request->get('discountAmount').'", "'.$request->get('paid').'", "'.$request->get('dues').'", "'.$request->get('bill_date').'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("Vendor Bill", "'.$request->get('vendor_name').'", "'.$request->get('paid').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('stock');
     }

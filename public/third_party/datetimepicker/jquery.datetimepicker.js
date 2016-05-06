@@ -1550,6 +1550,16 @@ $('#datePicker').datetimepicker({
 	//disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
 	//timepickerScrollbar:false,
 });
+$('#bill_date').datetimepicker({
+	format:'Y-m-d',
+	timepicker:false,
+	dayOfWeekStart : 6,
+	lang:'en',
+	maxDate: new Date(),
+	step:10,
+	closeOnDateSelect:true,
+	value:new Date().toJSON().slice(0, 10), //+' '+new Date().toJSON().slice(11, 19),
+});
 
 $('#datePicker_start').datetimepicker({
 	format:'Y-m-d',
