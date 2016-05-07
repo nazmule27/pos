@@ -756,7 +756,6 @@ function getProduct(e){
             $('#stock_pid').append('<option value="'+productObj.pid+'">'+productObj.p_name+'</option>');
         });
     });
-
 }
 
 function stockQuantityChange(){
@@ -1181,3 +1180,16 @@ function arrearsDuePaidChange(){
         pay_due.value=(pay_discount_price.value)-(parseInt(pay_old_paid.value)+parseInt(pay_paid.value));
     }
 }
+
+$(function() {
+    $( "#customerName" ).autocomplete({
+        source: '/ajax-client',
+        select: function (event, ui) {
+            $.get('/ajax-client-address?name='+(ui.item.value), function(data){
+                $.each(data, function(index, productObj){
+                    document.getElementById('address').value = productObj.address;
+                });
+            });
+        }
+    });
+});

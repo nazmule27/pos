@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="customerName">Customer Name: </label>
-                            <input type="text" class="form-control" name="customerName" id="customerName" value="N/A" autofocus required/>
+                            <input type="text" class="form-control" name="customerName" id="customerName" value="" autofocus autocomplete="off" required/>
                         </div>
                         <div class="col-sm-4">
                             <label class="control-label">Address:</label>

@@ -94,3 +94,17 @@ UNION ALL
 SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
     return Response::json($sheet);
 });
+
+Route::get('/ajax-client', function (){
+    $cname=Input::get('customerName');
+    $client=\DB::select('SELECT name, address FROM consumer WHERE type='.'"client" and name like '.'"%'.$cname.'%"');
+    foreach ($client as $row) {
+        $data[] = $row->name;
+    }
+    return Response::json($data);
+});
+Route::get('/ajax-client-address', function (){
+    $cname=Input::get('name');
+    $address=\DB::select('SELECT DISTINCT address FROM consumer WHERE type='.'"client" and name='.'"'.$cname.'"');
+    return Response::json($address);
+});
