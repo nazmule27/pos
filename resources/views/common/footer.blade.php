@@ -14,7 +14,7 @@
 <script type="text/javascript" src="{{ URL::asset('third_party/data_table/jquery.dataTables.columnFilter.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('third_party/data_table/sum().js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('third_party/datetimepicker/jquery.datetimepicker.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('//code.jquery.com/ui/1.11.4/jquery-ui.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('third_party/jquery-ui.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('third_party/nav/_css/nav.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('third_party/data_table/jquery.dataTables.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('third_party/datetimepicker/jquery.datetimepicker.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ URL::asset('third_party/jquery-ui.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ URL::asset('css/main.css') }}" />
     <script type="text/javascript" src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
 </head>
