@@ -56,11 +56,12 @@
                                 <a href="{{route('stock_pay.index')}}">Stock Bill Pay</a>
                             </li>
                             <li>
-                                <a href="{{route('balancesheet.create')}}">Net Profit Sheet</a>
-                            </li>
-                            <li>
                                 <a href="{{route('balancesheet.index')}}">Balance Sheet</a>
                             </li>
+                            <li>
+                                <a href="{{route('balancesheet.create')}}">Net Profit Sheet</a>
+                            </li>
+
                         </ul>
                     </li>
                     @endif
@@ -77,19 +78,20 @@
                                     <a href="{{url('/auth/register')}}">New User Registration</a>
                                 </li>
                                 <li>
+                                    <a href="{{url('/payment_type')}}">Payment Type</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('consumer.index')}}">Consumer</a>
+                                </li>
+                                <li>
                                     <a href="{{route('category.index')}}">Category</a>
                                 </li>
                                 <li>
                                     <a href="{{route('product.index')}}">Product</a>
                                 </li>
-                                <li>
-                                    <a href="{{url('/payment_type')}}">Payment Type</a>
-                                </li>
+
                                 <li>
                                     <a href="{{route('loan.index')}}">Loan</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('consumer.index')}}">Consumer</a>
                                 </li>
                                 @endif
                                 <li>
