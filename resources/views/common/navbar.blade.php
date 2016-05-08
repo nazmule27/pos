@@ -88,6 +88,9 @@
                                 <li>
                                     <a href="{{route('loan.index')}}">Loan</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('consumer.index')}}">Consumer</a>
+                                </li>
                                 @endif
                                 <li>
                                     <a href="{{url ('/auth/logout')}}">Log Out</a>

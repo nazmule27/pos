@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label class="control-label" for="customerName">Vendor Name: </label>
-                        <input type="text" class="form-control" name="vendor_name" id="vendor_name" required/>
+                        <input type="text" class="form-control" name="vendor_name" id="vendor_name" autocomplete="off" required/>
                     </div>
                     <div class="col-sm-5">
                         <label class="control-label">Address/Mobile:</label>

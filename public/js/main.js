@@ -199,6 +199,10 @@ $('#product').dataTable( {
     "pagingType": "full_numbers",
     "order": [[ 0, "asc" ], [ 1, "asc" ]]
 });
+$('#consumer').dataTable( {
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "pagingType": "full_numbers",
+});
 /*$('#stock').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
@@ -1055,24 +1059,33 @@ function stockDuePaidChange(){
         pay_due.value=(pay_net_price.value)-(parseInt(pay_old_paid.value)+parseInt(pay_paid.value));
     }
 }
-document.getElementById('customerName').onkeydown = function(event) {
-    if (event.keyCode == 13) {
-        if(customerName.value==null||customerName.value==''||customerName.value==undefined){
-            $("#customerName").focus();
-            return false
-        }
-        else {
-        $("#address").focus();
-        return false
+$(function() {
+    var cn=document.getElementById('customerName');
+    if(typeof cn !== 'undefined' && cn !== null) {
+        cn.onkeydown = function(event) {
+            if (event.keyCode == 13) {
+                if(customerName.value==null||customerName.value==''||customerName.value==undefined){
+                    $("#customerName").focus();
+                    return false
+                }
+                else {
+                    $("#address").focus();
+                    return false
+                }
+            }
         }
     }
-}
-document.getElementById('address').onkeydown = function(event) {
-    if (event.keyCode == 13) {
-        $("#category1").focus();
-        return false
+    var ca=document.getElementById('address');
+    if(typeof ca !== 'undefined' && ca !== null) {
+        ca.onkeydown = function(event) {
+            if (event.keyCode == 13) {
+                $("#category1").focus();
+                return false
+            }
+        }
     }
-}
+
+});
 
 function validateForm() {
     var product_arr = [];
@@ -1188,6 +1201,18 @@ $(function() {
             $.get('/ajax-client-address?name='+(ui.item.value), function(data){
                 $.each(data, function(index, productObj){
                     document.getElementById('address').value = productObj.address;
+                });
+            });
+        }
+    });
+});
+$(function() {
+    $( "#vendor_name" ).autocomplete({
+        source: '/ajax-vendor',
+        select: function (event, ui) {
+            $.get('/ajax-vendor-address?name='+(ui.item.value), function(data){
+                $.each(data, function(index, productObj){
+                    document.getElementById('vendor_address').value = productObj.address;
                 });
             });
         }

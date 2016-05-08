@@ -56,8 +56,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('loan', 'LoanController');
     Route::resource('installment', 'LoanInstallmentController');
     Route::resource('balancesheet', 'BalancesheetController');
+    Route::resource('consumer', 'ConsumerController');
     //Route::get('sales.exchange_edit', 'SalesController@editExchange');
     //Route::post('sales.exchange_update', 'SalesController@updateExchange');
+
 });
 
 Route::get('/ajax-product', function (){
@@ -96,15 +98,34 @@ SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, crea
 });
 
 Route::get('/ajax-client', function (){
-    $cname=Input::get('customerName');
+    $cname=Input::get('term');
     $client=\DB::select('SELECT name, address FROM consumer WHERE type='.'"client" and name like '.'"%'.$cname.'%"');
     foreach ($client as $row) {
         $data[] = $row->name;
     }
-    return Response::json($data);
+    if( isset($data) && ($data!=null) ) {
+        return Response::json($data);
+    }
+
 });
 Route::get('/ajax-client-address', function (){
     $cname=Input::get('name');
     $address=\DB::select('SELECT DISTINCT address FROM consumer WHERE type='.'"client" and name='.'"'.$cname.'"');
+    return Response::json($address);
+});
+
+Route::get('/ajax-vendor', function (){
+    $vname=Input::get('term');
+    $vendor=\DB::select('SELECT name, address FROM consumer WHERE type='.'"vendor" and name like '.'"%'.$vname.'%"');
+    foreach ($vendor as $row) {
+        $data[] = $row->name;
+    }
+    if( isset($data) && ($data!=null) ) {
+        return Response::json($data);
+    }
+});
+Route::get('/ajax-vendor-address', function (){
+    $vname=Input::get('name');
+    $address=\DB::select('SELECT DISTINCT address FROM consumer WHERE type='.'"vendor" and name='.'"'.$vname.'"');
     return Response::json($address);
 });

@@ -56,8 +56,8 @@ return [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'ayanbd_pos'),
-            'username'  => 'root', //root_ayanbd
-            'password'  => '', //Alam@riva1
+            'username'  => 'root_ayanbd',
+            'password'  => 'Alam@riva1',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
