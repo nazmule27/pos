@@ -29,7 +29,11 @@ $(".flp input, .flp textarea").blur(function(){
         })
     }
 })
-
+var x=document.getElementById('invoiceTable')
+if(typeof x !== 'undefined' && x !== null) {
+    var xt=x.getElementsByTagName('tbody')[0];
+    var counter = xt.rows.length;
+}
 $(".flp textarea").focus(function(){
     //calculate movement for .ch = half of input height
     var tm = $(this).outerHeight()/3 *-1 + "px";
@@ -40,6 +44,8 @@ $(".flp textarea").focus(function(){
         $(this).delay(d).animate({top: tm}, 200, 'easeOutBack');
     })
 })
+//var counter=1;
+
 
 $('#stock_pay').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
@@ -835,35 +841,44 @@ function quantityChange(id) {
     var vat= document.getElementById('vat');
     var net_bought_price= document.getElementById('net_bought_price');
 
-    if (quantity.value!='') {
-        amount.value=((price.value)*(quantity.value)).toFixed(2);
+    if (quantity!==null) {
+        if (quantity.value!=='') {
+            amount.value=((price.value)*(quantity.value)).toFixed(2);
+        }
+        else {
+            amount.value='';
+            total_price.value='';
+        }
     }
-    else {
-        amount.value='';
-        total_price.value='';
-    }
+
     var subV=0;
     var totalB=0;
-    for(var i=1; i<=id; i++ ) {
-        subV=parseFloat(subV)+parseFloat(document.getElementById('amount'+i).value);
-        totalB=parseFloat(totalB)+((parseFloat(document.getElementById('buying_price'+i).value))*(parseFloat(document.getElementById('quantity'+i).value)));
+    for(var i=1; i<=counter; i++ ) {
+        var am_count=document.getElementById('amount'+i);
+        if(typeof am_count !== 'undefined' && am_count !== null) {
+            subV = parseFloat(subV) + parseFloat(document.getElementById('amount' + i).value);
+            totalB = parseFloat(totalB) + ((parseFloat(document.getElementById('buying_price' + i).value)) * (parseFloat(document.getElementById('quantity' + i).value)));
+        }
     }
 
     total_price.value=subV;
     net_bought_price.value=totalB.toFixed(2);
 
-    if (quantity.value!='') {
-        totalAmountVat.value=parseFloat(total_price.value)+parseFloat(vat.value);
+    if (quantity!==null) {
+        if (quantity.value!='') {
+            totalAmountVat.value=parseFloat(total_price.value)+parseFloat(vat.value);
+        }
+        else {
+            totalAmountVat.value='';
+        }
+        if (parseInt(quantity.value)>parseInt(available.value)) {
+            $('#quantity'+(id)).addClass('error');
+        }
+        else if (parseInt(quantity.value)<=parseInt(available.value)) {
+            $('#quantity'+(id)).removeClass('error');
+        }
     }
-    else {
-        totalAmountVat.value='';
-    }
-    if (parseInt(quantity.value)>parseInt(available.value)) {
-        $('#quantity'+(id)).addClass('error');
-    }
-    else if (parseInt(quantity.value)<=parseInt(available.value)) {
-        $('#quantity'+(id)).removeClass('error');
-    }
+
     vatChange();
     discountChange();
     paidChange();
@@ -938,16 +953,21 @@ function stockQuantityChange(id) {
     var total_price= document.getElementById('total_price');
     var vat= document.getElementById('vat');
 
-    if (quantity.value!='') {
-        amount.value=(buying_price.value)*(quantity.value);
-    }
-    else {
-        amount.value='';
-        total_price.value='';
+    if(quantity!==null){
+        if (quantity.value!='') {
+            amount.value=(buying_price.value)*(quantity.value);
+        }
+        else {
+            amount.value='';
+            total_price.value='';
+        }
     }
     var subV=0;
-    for(var i=1; i<=id; i++ ) {
-        subV=parseInt(subV)+parseInt(document.getElementById('amount'+i).value);
+    for(var i=1; i<=counter; i++ ) {
+        var st_count=document.getElementById('amount'+i);
+        if(typeof st_count !== 'undefined' && st_count !== null) {
+            subV=parseInt(subV)+parseInt(document.getElementById('amount'+i).value);
+        }
     }
     total_price.value=subV;
 
@@ -980,21 +1000,13 @@ function stockPaidChange() {
         dues.value='';
     }
 };
-
-function deleteRow(row)
-{
-    var i=row.parentNode.parentNode.rowIndex;
-    if(i>1){
-        document.getElementById('invoiceTable').deleteRow(i);
-    }
-};
-
-
 function insRow()
 {
     var x=document.getElementById('invoiceTable').getElementsByTagName('tbody')[0];
     var new_row = x.rows[0].cloneNode(true);
-    var len = x.rows.length+1;
+    var len = counter+1;
+    //var len = x.rows.length+1;
+
     //new_row.cells[0].innerHTML = len;
 
     var inp0 = new_row.cells[0].getElementsByTagName('select')[0];
@@ -1041,6 +1053,7 @@ function insRow()
     x.appendChild( new_row );
 
     $('#'+inp0.id).focus();
+    counter=counter+1;
 };
 function KeyPress(e) {
     var evtobj = window.event? event : e
@@ -1049,7 +1062,24 @@ function KeyPress(e) {
     }
 }
 document.onkeydown = KeyPress;
-
+function deleteRowStock(row)
+{
+    var i=row.parentNode.parentNode.rowIndex;
+    if(i>1){
+        document.getElementById('invoiceTable').deleteRow(i);
+    }
+    var id='amount'+counter;
+    stockQuantityChange(id);
+};
+function deleteRow(row)
+{
+    var i=row.parentNode.parentNode.rowIndex;
+    if(i>1){
+        document.getElementById('invoiceTable').deleteRow(i);
+    }
+    var id='amount'+counter;
+    quantityChange(id);
+};
 function stockDuePaidChange(){
     var pay_net_price = document.getElementById('pay_net_price');
     var pay_old_paid= document.getElementById('pay_old_paid');
@@ -1218,3 +1248,4 @@ $(function() {
         }
     });
 });
+

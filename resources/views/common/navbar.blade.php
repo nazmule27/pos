@@ -89,7 +89,6 @@
                                 <li>
                                     <a href="{{route('product.index')}}">Product</a>
                                 </li>
-
                                 <li>
                                     <a href="{{route('loan.index')}}">Loan</a>
                                 </li>

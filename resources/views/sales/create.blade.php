@@ -76,7 +76,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <input type="button" id="addMore" class="btn btn-success addMore" value="Add More" onclick="insRow()" />
+                            <input type="button" id="addMore" class="btn btn-success addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+m)" />
                         </div>
                     </div>
                     <legend>Payment Info:</legend>

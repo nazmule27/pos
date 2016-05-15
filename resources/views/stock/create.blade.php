@@ -50,7 +50,6 @@
                                 </td>
                                 <td>
                                     {!! Form::select('productName1', (['' => 'Select Product']), null, ['class' => 'form-control', 'id' => 'productName1', 'onChange'=>'stockGetPrice(this.id, this.value)', 'required']) !!}
-
                                 </td>
                                 <td>
                                     <input class="form-control" type="text" name="buying_price1" id="buying_price1" readonly>
@@ -70,12 +69,12 @@
                                 </td>
                                 <td>
                                     <input type="hidden" name="products1" id="products1">
-                                    <a href="javascript:void(0)" onclick="deleteRow(this)"><i class="glyphicon glyphicon-trash "></i></a>
+                                    <a href="javascript:void(0)" onclick="deleteRowStock(this)"><i class="glyphicon glyphicon-trash "></i></a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <input type="button" id="addMore" class="btn btn-success addMore" value="Add More" onclick="insRow()" />
+                        <input type="button" id="addMore" class="btn btn-success addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+m)" />
                     </div>
                 </div>
                 <legend>Payment Info:</legend>
