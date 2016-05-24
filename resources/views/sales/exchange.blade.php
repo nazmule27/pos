@@ -75,7 +75,7 @@
                                         <input class="form-control" type="text" name="price{{$i+1}}" id="price{{$i+1}}" value="{{$unit_price[$i]}}" readonly>
                                     </td>
                                     <td>
-                                        <input class="form-control" type="text" name="quantity{{$i+1}}" id="quantity{{$i+1}}" autocomplete="off" onkeyup="quantityChange(this.id);" pattern="^[0-9]+(\.\d{1,2})?" placeholder="Quantity *" value="{{$quantity[$i]}}" required>
+                                        <input class="form-control" type="text" name="quantity{{$i+1}}" id="quantity{{$i+1}}" autocomplete="off" onkeyup="quantityChange(this.id);" pattern="^[0-9]+(\.\d{1,2})?" placeholder="Quantity *" value="{{$quantity[$i]}}" autofocus required>
                                     </td>
                                     <td>
                                         <input class="form-control" type="text" name="available{{$i+1}}" id="available{{$i+1}}" value="{{$available[0]->quantity}}" readonly required>
@@ -118,7 +118,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p class="peraCon">Taka</p>
-                            <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" value="{{$invoice[0]->paid}}" autofocus required>
+                            <input class="form-control width200 pull-right" type="text" name="paid" id="paid" pattern="^[0-9]+\d?" onkeyup="paidChange();" autocomplete="off" value="{{$invoice[0]->paid}}" required>
                             <p class="peraCon">Paid:</p>
                             <input type="hidden" name="net_bought_price" id="net_bought_price">
                             <input class="form-control width120 pull-right net-profit" type="text" name="net_profit" id="net_profit" value="{{$invoice[0]->profit}}" readonly required>
@@ -135,8 +135,8 @@
                     <legend></legend>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                            <input type="submit" class="btn btn-success pull-right" value="Submit" />
+                            <p class="sale-btn">&nbsp;</p>
+                            <input type="submit" class="btn btn-success pull-right" value="Exchange" />
                         </div>
                     </div>
                     <br><br>

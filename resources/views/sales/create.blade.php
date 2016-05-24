@@ -121,7 +121,7 @@
                     <legend></legend>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p class="peraCon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <p class="sale-btn">&nbsp;</p>
                             <input type="submit" class="btn btn-success pull-right" value="Submit" />
                         </div>
                     </div>

@@ -194,6 +194,11 @@ label {
     padding:8px;
     float:right;
 }
+.sale-btn {
+    padding:8px;
+    float:right;
+    margin-right: 20px;
+}
 .addMore {
     float:right;
     margin-right:0px;
@@ -415,7 +420,6 @@ footer {
 }
 .net-profit {
     margin-right: 264px;
-    height: 36px;
     text-align: center;
     width: 80px;
 }
