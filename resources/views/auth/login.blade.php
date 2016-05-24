@@ -15,8 +15,7 @@
                         </ul>
                     @endif
                 </div>
-                <form method="POST" action="/auth/login">
-                    {!! csrf_field() !!}
+                {!!Form::open(array('url'=>'/auth/login'))!!}
                     <div class="form-group col-md-12">
                         <input type="email" name="email" class="form-control custom-text" placeholder="Your email as user*" required value="{{ old('email') }}">
                     </div>
@@ -30,7 +29,7 @@
                     <div class="form-group col-md-12">
                         <button class="btn btn-default col-md-12 custom-text" type="submit">Login</button>
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
             <div class="sign-bottom"></div>
         </div>

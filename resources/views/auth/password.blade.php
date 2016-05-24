@@ -22,10 +22,7 @@
                             </ul>
                         </div>
                     @endif
-
-                    <form class="form-horizontal" role="form" method="POST" action="/password/email">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                    {!!Form::open(array('url'=>'/password/email', 'class'=>'form-horizontal', 'role'=>'form'))!!}
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
@@ -40,7 +37,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {!!Form::close()!!}
                 </div>
             </div>
         </div>

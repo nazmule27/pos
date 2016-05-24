@@ -15,8 +15,7 @@
                         </ul>
                     @endif
                 </div>
-                <form method="POST" action="/auth/register">
-                    {!! csrf_field() !!}
+                {!!Form::open(array('url'=>'/auth/register', 'class'=>'form-horizontal', 'role'=>'form'))!!}
                     <div class="form-group col-md-12">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control custom-text margin0" placeholder="Your Name *" value="{{ old('name') }}" required>
@@ -45,8 +44,7 @@
                     <div class="form-group col-md-12">
                         <button class="btn btn-default col-md-12 custom-text" type="submit">Register</button>
                     </div>
-
-                </form>
+                {!!Form::close()!!}
             </div>
             <div class="sign-bottom"></div>
         </div>

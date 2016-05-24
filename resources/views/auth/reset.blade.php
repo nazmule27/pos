@@ -17,8 +17,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="/password/reset">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {!!Form::open(array('url'=>'/password/reset', 'class'=>'form-horizontal', 'role'=>'form'))!!}
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group">
@@ -49,7 +48,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {!!Form::close()!!}
                 </div>
             </div>
         </div>
