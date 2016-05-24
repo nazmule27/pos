@@ -247,6 +247,9 @@ legend {
 .ui-menu .ui-menu-item {
     border-bottom: 1px dotted #dddddd;
 }
+.ui-menu .ui-menu-item:hover, .ui-widget-content .ui-state-focus {
+    border: 1px dotted #dddddd;
+}
 /**/
 .gly-spin {
     -webkit-animation: spin 2s infinite linear;

@@ -1248,4 +1248,17 @@ $(function() {
         }
     });
 });
-
+$(function() {
+    var cname=document.getElementById('customerName');
+    if(typeof cname !== 'undefined' && cname !== null) {
+        cname.onkeydown = function(event) {
+            if (event.keyCode == 13) {
+                $.get('/ajax-client-address?name='+(cname.value), function(data){
+                    $.each(data, function(index, productObj){
+                        document.getElementById('address').value = productObj.address;
+                    });
+                });
+            }
+        }
+    }
+});
