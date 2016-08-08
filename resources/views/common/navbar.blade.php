@@ -41,27 +41,26 @@
                         <a href="javascript:void(0)"><i class="glyphicon glyphicon-list"></i> Report</a>
                         <ul>
                             <li>
-                                <a href="{{route('stock.index')}}">Stock</a>
-                            </li>
-                            <li>
-                                <a href="{{route('sales.index')}}">Sales</a>
-                            </li>
-                            <li>
-                                <a href="{{url('return_list')}}">Return List</a>
-                            </li>
-                            <li>
-                                <a href="{{url('/report/payment')}}">Payments</a>
-                            </li>
-                            <li>
-                                <a href="{{route('stock_pay.index')}}">Stock Bill Pay</a>
+                                <a href="{{route('balancesheet.create')}}">Net Profit Sheet</a>
                             </li>
                             <li>
                                 <a href="{{route('balancesheet.index')}}">Balance Sheet</a>
                             </li>
                             <li>
-                                <a href="{{route('balancesheet.create')}}">Net Profit Sheet</a>
+                                <a href="{{route('stock_pay.index')}}">Stock Bill Pay</a>
                             </li>
-
+                            <li>
+                                <a href="{{url('/report/payment')}}">Payments</a>
+                            </li>
+                            <li>
+                                <a href="{{url('return_list')}}">Return List</a>
+                            </li>
+                            <li>
+                                <a href="{{route('sales.index')}}">Sales</a>
+                            </li>
+                            <li>
+                                <a href="{{route('stock.index')}}">Stock</a>
+                            </li>
                         </ul>
                     </li>
                     @endif

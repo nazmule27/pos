@@ -42,7 +42,7 @@
                         <td>{{$data->installment_taka}}</td>
                         <td>{{($data->installment_count)*($data->installment_taka)}}</td>
                         <td>{{date('Y/m/d g:i a',strtotime($data->created_at))}}</td>
-                        <td><a class="btn btn-default" href="{{route('loan.edit', $data->lid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
+                        <td><a class="btn btn-default btn-sm" href="{{route('loan.edit', $data->lid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

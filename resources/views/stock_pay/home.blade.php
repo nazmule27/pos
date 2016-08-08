@@ -47,7 +47,7 @@
                         <td>{{$data->paid}}</td>
                         <td>{{$data->due}}</td>
                         <td>{{date('Y/m/d g:i a',strtotime($data->updated_at))}}</td>
-                        <td><a class="btn btn-default" href="{{route('stock_pay.edit', $data->id)}}"><i class="glyphicon glyphicon-pencil"></i>Pay</a></td>
+                        <td><a class="btn btn-default btn-sm" href="{{route('stock_pay.edit', $data->id)}}"><i class="glyphicon glyphicon-pencil"></i> Pay</a></td>
                     </tr>
                     @endforeach
                 </tbody>

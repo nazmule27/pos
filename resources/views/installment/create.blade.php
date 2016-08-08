@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-12">
             <div>
-                <input type="submit" class="btn btn-default custom-text" value="Submit" />
+                <input type="submit" class="btn btn-primary custom-text" value="Submit" />
             </div>
         </div>
         {!!Form::close()!!}

@@ -13,7 +13,7 @@
                         <th>Address</th>
                         <th>Type</th>
                         <th width="150">Creation Date</th>
-                        <th width="100">Edit</th>
+                        <th width="60">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +23,7 @@
                         <td>{{$data->address}}</td>
                         <td>{{$data->type}}</td>
                         <td>{{date('Y/m/d g:i a',strtotime($data->created_at))}}</td>
-                        <td><a class="btn btn-default" href="{{route('consumer.edit', $data->id)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
+                        <td><a class="btn btn-default btn-sm" href="{{route('consumer.edit', $data->id)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

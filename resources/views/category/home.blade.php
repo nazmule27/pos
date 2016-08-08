@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$data->c_name}}</td>
                         <td>
-                            <a class="btn btn-default" href="{{route('category.edit', $data->cid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a class="btn btn-default btn-sm" href="{{route('category.edit', $data->cid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                             {{--{!!Form::open(array('route' => ['category.destroy', $data->cid], 'class'=>'pull-right', 'method'=>'delete'))!!}
                             {!!Form::hidden('cid', $data->cid)!!}
                             {!!Form::submit('Delete', ['class'=>'btn btn-danger'])!!}

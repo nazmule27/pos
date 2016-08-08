@@ -24,7 +24,7 @@
                         <td>{{$data->buying_price}}</td>
                         <td>{{$data->selling_price}}</td>
                         <td>
-                            <a class="btn btn-default" href="{{route('product.edit', $data->pid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a class="btn btn-default btn-sm" href="{{route('product.edit', $data->pid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                             {{--{!!Form::open(array('route' => ['product.destroy', $data->pid], 'class'=>'pull-right', 'method'=>'delete'))!!}
                             {!!Form::hidden('pid', $data->pid)!!}
                             {!!Form::submit('Delete', ['class'=>'btn btn-danger'])!!}

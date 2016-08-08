@@ -91,7 +91,7 @@
                                 <?php }?>
                                 </tbody>
                             </table>
-                            <input type="button" id="addMore" class="btn btn-success addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+m)"/>
+                            <input type="button" id="addMore" class="btn btn-success btn-sm addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+m)"/>
                         </div>
                     </div>
                     <legend>Payment Info:</legend>
@@ -136,7 +136,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p class="sale-btn">&nbsp;</p>
-                            <input type="submit" class="btn btn-success pull-right" value="Exchange" />
+                            <input type="submit" class="btn btn-primary pull-right" value="Exchange" />
                         </div>
                     </div>
                     <br><br>

@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$data->payment_title}}</td>
                         <td>
-                            <a class="btn btn-default" href="{{route('payment_type.edit', $data->ptid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a class="btn btn-default btn-sm" href="{{route('payment_type.edit', $data->ptid)}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                         </td>
                     </tr>
                     @endforeach

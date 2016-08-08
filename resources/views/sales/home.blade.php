@@ -19,7 +19,7 @@
                         <th>Dues</th>
                         <th>Soled By</th>
                         <th>Selling Date</th>
-                        <th width="160">Action</th>
+                        <th width="140">Action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -55,10 +55,10 @@
                             {!!Form::hidden('invoice_no', $data->invoice_no)!!}
                             {!!Form::hidden('products', $data->products)!!}
                             {!!Form::hidden('quantity', $data->quantity)!!}
-                            {!!Form::submit('Return', ['class'=>'btn btn-danger'])!!}
+                            {!!Form::submit('Return', ['class'=>'btn btn-danger btn-sm'])!!}
                             {!!Form::close()!!}
-                            <a class="btn btn-warning" href="{{route('sales.show', $data->id)}}">Exch.</a>
-                            <a class="btn btn-success" href="{{route('sales.edit', $data->id)}}">Due</a>
+                            <a class="btn btn-warning btn-sm" href="{{route('sales.show', $data->id)}}">Exch.</a>
+                            <a class="btn btn-success btn-sm" href="{{route('sales.edit', $data->id)}}">Due</a>
                         </td>
                     </tr>
                     @endforeach
