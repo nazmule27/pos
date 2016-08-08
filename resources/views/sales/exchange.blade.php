@@ -100,7 +100,7 @@
                             <p class="peraCon">Taka</p>
                             <input class="form-control width200 pull-right" type="text" name="totalAmountVat" id="totalAmountVat" value="{{$invoice[0]->total_price_vat}}" readonly>
                             <p class="peraCon">=</p>
-                            <input class="form-control width120 pull-right" type="text" name="vat" id="vat" pattern="^[0-9](\.\d{1,2})?" value="{{$invoice[0]->vat}}" onkeyup="vatChange();" autocomplete="off" required>
+                            <input class="form-control width120 vat pull-right" type="text" name="vat" id="vat" pattern="^[0-9](\.\d{1,2})?" value="{{$invoice[0]->vat}}" onkeyup="vatChange();" autocomplete="off" required>
                             <p class="peraCon">+VAT:</p>
                             <input class="form-control width200 pull-right" type="text" name="total_price" id="total_price" value="{{$invoice[0]->total_price}}" readonly>
                             <p class="peraCon">Total Taka:</p>

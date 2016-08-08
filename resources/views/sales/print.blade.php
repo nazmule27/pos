@@ -71,7 +71,7 @@
                 <tr>
                     <td colspan="2" align="right"></td>
                     <td colspan="2" align="right">(+) Vat: </td>
-                    <td align="right">{{session()->get('sale_input')['vat']}}</td>
+                    <td align="right">(%) {{session()->get('sale_input')['vat']}}</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right"></td>

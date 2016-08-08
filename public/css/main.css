@@ -255,6 +255,9 @@ legend {
 .ui-menu .ui-menu-item:hover, .ui-widget-content .ui-state-focus {
     border: 1px dotted #dddddd;
 }
+.vat {
+    background:url("../img/percent.png") no-repeat scroll right 5px top 11px / 12px auto;
+}
 /**/
 .gly-spin {
     -webkit-animation: spin 2s infinite linear;

@@ -85,7 +85,7 @@
                             <p class="peraCon">Taka</p>
                             <input class="form-control width200 pull-right" type="text" name="totalAmountVat" id="totalAmountVat" readonly>
                             <p class="peraCon">=</p>
-                            <input class="form-control width120 pull-right" type="text" name="vat" id="vat" pattern="^[0-9](\.\d{1,2})?" value="0" onkeyup="vatChange();" autocomplete="off" required>
+                            <input class="form-control width120 pull-right vat" type="text" name="vat" id="vat" pattern="^[0-9](\.\d{1,2})?" value="0" onkeyup="vatChange();" autocomplete="off" required>
                             <p class="peraCon">+VAT:</p>
                             <input class="form-control width200 pull-right" type="text" name="total_price" id="total_price" value="0" readonly>
                             <p class="peraCon">Total Taka:</p>
