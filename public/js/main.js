@@ -196,6 +196,10 @@ $('#payment').dataTable( {
         );
     }
 });
+$('#branch').dataTable( {
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "pagingType": "full_numbers",
+});
 $('#category').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",
@@ -1057,7 +1061,7 @@ function insRow()
 };
 function KeyPress(e) {
     var evtobj = window.event? event : e
-    if (evtobj.keyCode == 77 && evtobj.ctrlKey){
+    if (evtobj.keyCode == 89 && evtobj.ctrlKey){
         insRow();
     }
 }

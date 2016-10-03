@@ -14,16 +14,18 @@ class BalancesheetController extends Controller
 {
     public function index()
     {
+        $branch=Auth::user()->branch;
         //$all_data=Product::all();
         $all_data = \DB::select('SELECT @a:=@a+1 sl, xx.* FROM
-(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
+(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income where branch='."'".$branch."'".'
 UNION ALL
-SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
+SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment where branch='."'".$branch."'".' ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
         return view('report.balancesheet', ['all_data' => $all_data]);
     }
     public function create()
     {
-        $all_data = \DB::select('SELECT transaction_title, address, credit, debit, status, updated_at from net_balance ORDER BY created_at desc');
+        $branch=Auth::user()->branch;
+        $all_data = \DB::select('SELECT transaction_title, address, credit, debit, status, updated_at from net_balance where branch='."'".$branch."'".' ORDER BY created_at desc');
         return view('report.netbalancesheet', ['all_data' => $all_data]);
     }
     public function store(Request $request)

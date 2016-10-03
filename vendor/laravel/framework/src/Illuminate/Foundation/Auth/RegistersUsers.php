@@ -18,7 +18,8 @@ trait RegistersUsers
     {
         if(isset(Auth::user()->role)){
             if(Auth::user()->role==='superadmin'){
-                return view('auth.register');
+                $branch = \DB::table('branch')->lists('branch_name', 'branch_name');
+                return view('auth.register')->with('categories', $branch);
             }
             else{
                 return redirect('auth/login');

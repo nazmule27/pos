@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <center><a class="navbar-brand" href="home"><img class="logo" src="{{ URL::asset('img/logo.png') }}" alt=""> POS</a></center>
+            <center><a class="navbar-brand" href="home"><img class="logo" src="{{ URL::asset('img/logo.png') }}" alt=""> POS <?php if(isset(Auth::user()->branch)) echo '-'.Auth::user()->branch.' Branch'?> </a></center>
         </div>
         <!--nav start-->
         <div id="nav-container">

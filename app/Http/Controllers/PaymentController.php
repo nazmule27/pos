@@ -14,8 +14,9 @@ class PaymentController extends Controller
 {
     public function index()
     {
+        $branch=Auth::user()->branch;
         //$all_data=Product::all();
-        $all_data = \DB::select('SELECT p.* FROM payment p order by created_at desc');
+        $all_data = \DB::select('SELECT p.* FROM payment p where p.branch='."'".$branch."'".' order by created_at desc');
         return view('payment.home', ['all_data' => $all_data]);
     }
     public function create()
@@ -25,12 +26,12 @@ class PaymentController extends Controller
     }
     public function store(Request $request)
     {
+        $branch=Auth::user()->branch;
         /*$input=$request->all();
         Payment::create($input);*/
-        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, status, created_at, updated_at) VALUES ("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "'.$request->get('amount').'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
-        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
-("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "0", "'.$request->get('amount').'", "Valid", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
-
+        \DB::insert('INSERT INTO payment(payment_title, purpose, amount, branch, status, created_at, updated_at) VALUES ("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "'.$request->get('amount').'", "'.$branch.'", "Valid", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, branch, status, collected_by, created_at, updated_at) VALUES
+("'.$request->get('payment_title').'", "'.$request->get('purpose').'", "0", "'.$request->get('amount').'", "'.$branch.'", "Valid", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('payment');
     }
     public function show($id)

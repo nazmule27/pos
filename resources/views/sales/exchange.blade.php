@@ -91,7 +91,7 @@
                                 <?php }?>
                                 </tbody>
                             </table>
-                            <input type="button" id="addMore" class="btn btn-success btn-sm addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+m)"/>
+                            <input type="button" id="addMore" class="btn btn-success btn-sm addMore" value="Add More" onclick="insRow()" title="Add new row (Ctrl+y)"/>
                         </div>
                     </div>
                     <legend>Payment Info:</legend>

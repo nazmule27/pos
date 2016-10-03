@@ -16,13 +16,15 @@ class SalesController extends Controller
 {
     public function index()
     {
+        $branch=Auth::user()->branch;
         //$all_data=Stock::all();
-        $all_data= \DB::select('select s.* from sales s order by created_at desc');
+        $all_data= \DB::select('select s.* from sales s where s.branch='."'".$branch."'".' order by created_at desc');
         return view('sales.home', ['all_data' => $all_data]);
     }
     public function return_list()
     {
-        $all_data= \DB::select('select * from return_list order by created_at desc');
+        $branch=Auth::user()->branch;
+        $all_data= \DB::select('select * from return_list where branch='."'".$branch."'".' order by created_at desc');
         return view('sales.returns', ['all_data' => $all_data]);
     }
     public function create()
@@ -33,6 +35,7 @@ class SalesController extends Controller
     }
     public function store(Request $request)
     {
+        $branch=Auth::user()->branch;
         $categories='';
         $productNames='';
         $products='';
@@ -52,7 +55,7 @@ class SalesController extends Controller
             }
             if(isset($product)){
                 $products=$products.$product.',';
-                \DB::update('UPDATE stock SET quantity=round(quantity-'.$quantity.',2) WHERE cid='.$category.' AND pid='.$product);
+                \DB::update('UPDATE stock SET quantity=round(quantity-'.$quantity.',2) WHERE cid='.$category.' AND pid='.$product.' AND branch='."'".$branch."'");
             }
             if(isset($productName)){
                 $productNames=$productNames.$productName.',';
@@ -93,12 +96,13 @@ class SalesController extends Controller
             'paid' => $request->get('paid'),
             'dues' => $request->get('dues'),
             'profit' => $request->get('net_profit'),
+            'branch' => $branch,
             'sold_by' => Auth::user()->name,
         );
-        \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
-("'.$next_invoice.'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
-        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
-("'.'Sales Profit'.'", "'.$next_invoice.'",  "'.$request->get('net_profit').'", "0", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into income(invoice_no, income_title, amount, branch, status, collected_by, created_at, updated_at) VALUES
+("'.$next_invoice.'", "'.'Sales'.'" , "'.$request->get('paid').'", "'.$branch.'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, branch, status, collected_by, created_at, updated_at) VALUES
+("'.'Sales Profit'.'", "'.$next_invoice.'",  "'.$request->get('net_profit').'", "0", "'.$branch.'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         Sales::create($input);
         session()->put('sale_input', $input);
         return redirect('/prints');
@@ -120,33 +124,36 @@ class SalesController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $branch=Auth::user()->branch;
         \DB::update('UPDATE sales SET paid='.$request->get('old_paid').'+'.$request->get('paid').', dues='.$request->get('due').'  WHERE id='.$id);
-        \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES ("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into income(invoice_no, income_title, amount, branch, status, collected_by, created_at, updated_at) VALUES ("'.$request->get('invoice_no').'", "'.'Sales (Arrear)'.'" , "'.$request->get('paid').'", "'.$branch.'","'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         return redirect('sales');
 
     }
 
     public function destroy(Request $request,$id)
     {
+        $branch=Auth::user()->branch;
         $products=explode(",", $request->get('products'));
         $quantity=explode(",", $request->get('quantity'));
 
         for ($i = 0; $i < count($products); ++$i) {
-            \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'"');
+            \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'" and branch="'.$branch.'"');
         }
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoice_no').'"');
         \DB::delete('DELETE FROM net_balance WHERE address='.'"'.$request->get('invoice_no').'"');
-        \DB::insert('INSERT INTO return_list SELECT `id`, `invoice_no`, `customer_id`, `customer_address`, `categories`, `products`, `unit_price`, `quantity`, `amount`, `total_price`, `vat`, `total_price_vat`, `discount`, `discount_price`, `paid`, `dues`, `sold_by`, '.'"'.Auth::user()->name.'"'.' as return_by,  `created_at`, "'.date('Y-m-d H:i:s').'" as updated_at FROM sales WHERE id='.'"'.$id.'"');
+        \DB::insert('INSERT INTO return_list SELECT `id`, `invoice_no`, `customer_id`, `customer_address`, `categories`, `products`, `unit_price`, `quantity`, `amount`, `total_price`, `vat`, `total_price_vat`, `discount`, `discount_price`, `paid`, `dues`, `branch`, `sold_by`, '.'"'.Auth::user()->name.'"'.' as return_by,  `created_at`, "'.date('Y-m-d H:i:s').'" as updated_at FROM sales WHERE id='.'"'.$id.'"');
         $data=Sales::findOrFail($id);
         $data->delete();
         return redirect('sales');
     }
     public function exchange(Request $request, $id)
     {
+        $branch=Auth::user()->branch;
         $products=explode(",", session()->get('old_sale')['products']);
         $quantity=explode(",", session()->get('old_sale')['quantity']);
         for ($i = 0; $i < count($products); ++$i) {
-            \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'"');
+            \DB::update('UPDATE stock SET quantity=quantity+"'.$quantity[$i].'" where pid="'.$products[$i].'" and branch="'.$branch.'"');
         }
         $categories='';
         $productNames='';
@@ -167,7 +174,7 @@ class SalesController extends Controller
             }
             if(isset($product)){
                 $products=$products.$product.',';
-                \DB::update('UPDATE stock SET quantity=round(quantity-'.$quantity.',2) WHERE cid='.$category.' AND pid='.$product);
+                \DB::update('UPDATE stock SET quantity=round(quantity-'.$quantity.',2) WHERE cid='.$category.' AND pid='.$product.' AND branch='."'".$branch."'");
             }
             if(isset($productName)){
                 $productNames=$productNames.$productName.',';
@@ -209,11 +216,11 @@ class SalesController extends Controller
         $data->update($input);
 
         \DB::delete('DELETE FROM income WHERE invoice_no='.'"'.$request->get('invoiceNo').'"');
-        \DB::insert('insert into income(invoice_no, income_title, amount, status, collected_by, created_at, updated_at) VALUES
-("'.$request->get('invoiceNo').'", "'.'Sales (Exchange)'.'" , "'.$request->get('paid').'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into income(invoice_no, income_title, amount, branch, status, collected_by, created_at, updated_at) VALUES
+("'.$request->get('invoiceNo').'", "'.'Sales (Exchange)'.'" , "'.$request->get('paid').'", "'.$branch.'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         \DB::delete('DELETE FROM net_balance WHERE address='.'"'.$request->get('invoiceNo').'"');
-        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, status, collected_by, created_at, updated_at) VALUES
-("'.'Sales Profit (Exchange)'.'", "'.$request->get('invoiceNo').'",  "'.$request->get('net_profit').'", "0", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
+        \DB::insert('insert into net_balance(transaction_title, address, credit, debit, branch, status, collected_by, created_at, updated_at) VALUES
+("'.'Sales Profit (Exchange)'.'", "'.$request->get('invoiceNo').'",  "'.$request->get('net_profit').'", "0", "'.$branch.'", "'.'Valid'.'", "'.Auth::user()->name.'", "'.date('Y-m-d H:i:s').'", "'.date('Y-m-d H:i:s').'")');
         session()->put('sale_input', $input);
         return redirect('/prints');
     }

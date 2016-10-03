@@ -1,6 +1,6 @@
 <?php
 
-/*
+/*Auth::user()->branch;
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
@@ -34,6 +34,7 @@ Route::controllers([
 ]);
 Route::group(['middleware' => 'auth'], function() {
 // Registration routes...
+    Route::resource('branch', 'BranchController');
     Route::get('auth/register', 'Auth\AuthController@getRegister');
     Route::post('auth/register', 'Auth\AuthController@postRegister');
 
@@ -68,18 +69,21 @@ Route::get('/ajax-product', function (){
     return Response::json($products);
 });
 Route::get('/ajax-product-stock', function (){
+    $branch=Auth::user()->branch;
     $pid=Input::get('pid');
     $products=Product::where('pid', '=', $pid)->get();
     //$products=\DB::select('SELECT p.pid, p.cid, p.p_name, p.buying_price, p.selling_price,s.quantity FROM product p, stock s WHERE p.pid=s.pid AND p.pid='.$pid);
     return Response::json($products);
 });
 Route::get('/ajax-product-price', function (){
+    $branch=Auth::user()->branch;
     $pid=Input::get('pid');
     //$products=Product::where('pid', '=', $pid)->get();
-    $products=\DB::select('SELECT p.pid, p.cid, p.p_name, ROUND(p.buying_price,2) as buying_price, ROUND(p.selling_price, 2) as selling_price, ROUND(s.quantity, 2) as quantity FROM product p, stock s WHERE p.pid=s.pid AND p.pid='.$pid);
+    $products=\DB::select('SELECT p.pid, p.cid, p.p_name, ROUND(p.buying_price,2) as buying_price, ROUND(p.selling_price, 2) as selling_price, ROUND(s.quantity, 2) as quantity FROM product p, stock s WHERE p.pid=s.pid AND p.pid='.$pid.' AND s.branch='."'".$branch."'");
     return Response::json($products);
 });
 Route::get('/ajax-stock-product-price', function (){
+    $branch=Auth::user()->branch;
     $pid=Input::get('pid');
     $products=Product::where('pid', '=', $pid)->get();
     return Response::json($products);
@@ -90,10 +94,11 @@ Route::get('/ajax-loan-installment', function (){
     return Response::json($loan);
 });
 Route::get('/balance', function (){
+    $branch=Auth::user()->branch;
     $sheet=\DB::select('SELECT @a:=@a+1 sl, xx.* FROM
-(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income
+(SELECT income_title AS title, invoice_no AS address, "-" AS dr, amount AS cr, created_at FROM income where branch='."'".$branch."'".'
 UNION ALL
-SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
+SELECT payment_title AS title, purpose AS address, amount AS dr, "-" AS cr, created_at FROM payment where branch='."'".$branch."'".' ORDER BY created_at DESC) xx, (SELECT @a:= 0) AS a;');
     return Response::json($sheet);
 });
 
