@@ -852,6 +852,7 @@ $('#sheet').dataTable( {
         );
     }
 });
+
 $('#stock_pid').on('change',function(e){
     var pid = e.target.value;
     $.get('/ajax-product-stock?pid='+pid, function(data){
@@ -891,7 +892,6 @@ function getProduct(e){
         });
     });
 }
-
 function stockQuantityChange(){
     var stock_buying_price = document.getElementById('stock_buying_price');
     var stock_quantity= document.getElementById('stock_quantity');
@@ -1337,7 +1337,14 @@ function validateFormProduct() {
         return false;
     }
 }
-
+function validateFormStockTransfer() {
+    var transfer_available = document.getElementById('transfer_available').value;
+    var transfer_quantity = document.getElementById('transfer_quantity').value;
+    if (parseFloat(transfer_available)<parseFloat(transfer_quantity)) {
+        $("#transfer_quantity").focus();
+        return false;
+    }
+}
 function arrearsDuePaidChange(){
     var pay_discount_price = document.getElementById('pay_discount_price');
     var pay_old_paid= document.getElementById('pay_old_paid');
@@ -1386,3 +1393,4 @@ $(function() {
         }
     }
 });
+

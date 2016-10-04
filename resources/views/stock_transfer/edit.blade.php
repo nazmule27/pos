@@ -31,8 +31,14 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
+                <label for="available">Available</label>
+                <input type="text" id="transfer_available" name="available" class="form-control custom-text"  value="{{$product_detail[0]->quantity}}" placeholder="Available *" required readonly>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="quantity">Quantity</label>
-                <input type="text" name="quantity" class="form-control custom-text"  value="{{$product_detail[0]->quantity}}" placeholder="Product Name *" required autofocus>
+                <input type="text" id="transfer_quantity" name="quantity" class="form-control custom-text"  value="{{$product_detail[0]->quantity}}" placeholder="Transfer quantity *" required autofocus>
             </div>
         </div>
         <div class="col-md-4">
