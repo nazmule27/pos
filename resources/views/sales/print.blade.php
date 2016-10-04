@@ -19,6 +19,7 @@
         <div class="full-with customer-info">
            Date: {{date('Y-m-d H:i:s')}},
            Invoice No: {{session()->get('sale_input')['invoice_no']}},
+           Branch: {{Auth::user()->branch}},
            Customer Name: {{session()->get('sale_input')['customer_id']}},
            Customer Addr.: {{session()->get('sale_input')['customer_address']}}.
         </div>
@@ -31,7 +32,7 @@
                 <tr>
                     <th width="30">SL</th>
                     <th width="400">Products</th>
-                    <th width="50" align="right">Price</th>
+                    <th width="30" align="right">Price</th>
                     <th width="50" align="right">Qunt.</th>
                     <th width="60" align="right">Total</th>
                 </tr>
@@ -48,7 +49,7 @@
                 ?>
                 <tr>
                     <td>{{($i+1).'.'}}</td>
-                    <td>{{$productName[$i]}}</td>
+                    <td class="dot-table">{{$productName[$i]}}</td>
                     <td align="right">{{$unit_price[$i]}}</td>
                     <td align="right">{{$quantity[$i]}}</td>
                     <td align="right">{{$amount[$i]}}</td>
