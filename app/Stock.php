@@ -8,5 +8,5 @@ class Stock extends Model
 {
     protected $table="stock";
     protected $primaryKey="id";
-    protected $fillable=['cid', 'pid', 'quantity', 'branch'];
+    protected $fillable=['id', 'cid', 'pid', 'quantity', 'branch'];
 }

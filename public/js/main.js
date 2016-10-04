@@ -355,6 +355,126 @@ $('#stock').dataTable( {
     }
 });
 
+$('#stock_transfer').dataTable( {
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "pagingType": "full_numbers",
+    "order": [[ 7, "desc" ]],
+    "footerCallback": function ( row, data, start, end, display ) {
+        var api = this.api(), data;
+        // Remove the formatting to get integer data for summation
+        var intVal = function ( i ) {
+            return typeof i === 'string' ?
+            i.replace(/[\$,]/g, '')*1 :
+                typeof i === 'number' ?
+                    i : 0;
+        };
+
+        // Total over all pages
+        totalTaka = api
+            .column( 2 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageTotalTaka = api
+            .column( 2, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 2 ).footer() ).html(
+            parseFloat(pageTotalTaka).toFixed(2) +' ('+ parseFloat(totalTaka).toFixed(2) +')'
+        );
+        //
+        // Total over all pages
+        totalTakaSelling = api
+            .column( 3 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageTotalTakaSelling = api
+            .column( 3, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 3 ).footer() ).html(
+            parseFloat(pageTotalTakaSelling).toFixed(2) +' ('+ parseFloat(totalTakaSelling).toFixed(2) +')'
+        );
+        //
+        // Total over all pages
+        totalQuantity = api
+            .column( 4 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageTotalQuantity = api
+            .column( 4, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 4 ).footer() ).html(
+            parseFloat(pageTotalQuantity).toFixed(2)  +' ('+ parseFloat(totalQuantity).toFixed(2)+')'
+        );
+        //
+        netTotalTaka = api
+            .column( 5 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageNetTotalTaka = api
+            .column( 5, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 5 ).footer() ).html(
+            parseFloat(pageNetTotalTaka).toFixed(2) +' ('+ parseFloat(netTotalTaka).toFixed(2) +')'
+        );
+        //
+        // Total over all pages
+        netTotalTakaSelling = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Total over this page
+        pageNetTotalTakaSelling = api
+            .column( 6, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        $( api.column( 6 ).footer() ).html(
+            parseFloat(pageNetTotalTakaSelling).toFixed(2) +' ('+ parseFloat(netTotalTakaSelling).toFixed(2) +')'
+        );
+    }
+});
+
 $('#sales').dataTable( {
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "pagingType": "full_numbers",

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('auth/register', 'Auth\AuthController@postRegister');
 
     Route::resource('stock', 'StockController');
+    Route::resource('stock_transfer', 'StockTransferController');
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
     Route::resource('sales', 'SalesController');

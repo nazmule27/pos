@@ -18,8 +18,15 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $all_data=Branch::all();
-        return view('branch.home', compact('all_data'));
+        if((Auth::user()->role==='superadmin') && (Auth::user()->email==='nlnazmul@gmail.com')){
+            $all_data=Branch::all();
+            return view('branch.home', compact('all_data'));
+        }
+        else{
+            return redirect('auth/login');
+        }
+
+
     }
 
     /**
@@ -29,7 +36,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role==='superadmin'){
+        if((Auth::user()->role==='superadmin') && (Auth::user()->email==='nlnazmul@gmail.com')){
             return view('branch.create');
         }
         else{
@@ -46,7 +53,7 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->role==='superadmin'){
+        if((Auth::user()->role==='superadmin') && (Auth::user()->email==='nlnazmul@gmail.com')){
             $input=$request->all();
             Branch::create($input);
             return redirect('branch');

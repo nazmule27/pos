@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="branch_name">Branch</label>
-                    <input type="text" name="branch_name" class="form-control custom-text" value="{{$branch->branch_name}}" placeholder="Branch Name *" required autofocus>
+                    <input type="text" name="branch_name" class="form-control custom-text" value="{{$branch->branch_name}}" placeholder="Branch Name *" required readonly autofocus>
                 </div>
             </div>
             <div class="col-md-12">

@@ -42,9 +42,8 @@
                         </select>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="password">Branch</label>
-                        {!! Form::select('branch', (['' => 'Select Branch'] + $categories), null, ['class' => 'form-control custom-text', 'required']) !!}
-
+                        <label for="branch">Branch</label>
+                        {!! Form::select('branch', (['' => 'Select Branch'] + $branch), null, ['class' => 'form-control custom-text', 'required']) !!}
                     </div>
                     <div class="form-group col-md-12">
                         <button class="btn btn-default col-md-12 custom-text" type="submit">Register</button>

@@ -17,6 +17,11 @@
                             <li>
                                 <a href="{{route('stock.index')}}">Stock</a>
                             </li>
+                            @if (Auth::user()->role=='superadmin')
+                            <li>
+                                <a href="{{route('stock_transfer.index')}}">Stock Transfer</a>
+                            </li>
+                            @endif
                             <li>
                                 <a href="{{route('stock_pay.index')}}">Stock Bill Pay</a>
                             </li>
