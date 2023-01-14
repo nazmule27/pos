@@ -1,0 +1,28 @@
+mv ~/public_html ~/laravel
+ln -s ~/laravel/public ~/public_html
+
+change /config/database.php
+'database'  => env('DB_DATABASE', 'rajenter_rajenterprise'),
+'username'  => 'rajenter_root',
+'password'  => 'L3wd5dGk96',
+
+truncate table consumer;
+truncate table income;
+truncate table return_list;
+truncate table migrations;
+truncate table net_balance;
+truncate table payment;
+truncate table sales;
+truncate table stock;
+truncate table stock_pay;
+truncate table loan_installment;
+
+SET FOREIGN_KEY_CHECKS = 0;
+truncate table loan;
+truncate table product;
+truncate table product_category;
+SET FOREIGN_KEY_CHECKS = 1;
+
+ALTER TABLE loan AUTO_INCREMENT = 1;
+ALTER TABLE product AUTO_INCREMENT = 1;
+ALTER TABLE product_category AUTO_INCREMENT = 1;
